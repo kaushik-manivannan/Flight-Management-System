@@ -29,3 +29,26 @@ public class Driver extends JFrame {
 			}
 		});
 	}
+
+	public Driver() {
+		setMainFrameProperties();
+		createContentPane();
+		addWelcomeLabel();
+		addLoginTypeButton();
+		addExitButton();
+		initializeFlightData();
+	}
+
+	private void setMainFrameProperties() {
+//		setBackground(Color.PINK);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 665, 451);
+	}
+
+	private void createContentPane() {
+		contentPane = new JPanel();
+//		contentPane.setBackground(Color.PINK);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+	}
