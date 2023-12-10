@@ -1,18 +1,27 @@
 package edu.neu.csye6200;
 
 public class internationalFlight {
-    private String flightID,date,departDestination,landDestination,economySeats,businessSeats,distance;
+    private String flightID,timeDuration,date,departDestination,landDestination,economySeats,businessSeats,distance;
 	boolean isBooked;
 	
 	internationalFlight(String flightID,String departTime,String landTime,String departDestination,String landDestination,String economySeats,String businessSeats,String distance)
 	{
 		this.flightID=flightID;
+		this.timeDuration=departTime;
 		this.date=landTime;
 		this.departDestination=departDestination;
 		this.landDestination=landDestination;
 		this.economySeats=economySeats;
 		this.businessSeats=businessSeats;
 		this.distance=distance;
+	}
+	
+	public String getTimeDuration() {
+		return timeDuration;
+	}
+
+	public void setTimeDuration(String timeDuration) {
+		this.timeDuration = timeDuration;
 	}
 
 	public String getDate() {
