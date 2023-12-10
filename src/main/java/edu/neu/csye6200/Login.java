@@ -114,3 +114,25 @@ public class Login extends JFrame {
 		label3.setBounds(10, 137, 83, 19);
 		contentPane.add(label3);
 	}
+
+	private void addPasswordField() {
+		password = new JPasswordField();
+		password.setBounds(103, 71, 121, 20);
+		contentPane.add(password);
+	}
+
+	private void addBackButton() {
+		JButton btnNewButton = new JButton("Back");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNewButton.setBounds(419, 137, 89, 23);
+		contentPane.add(btnNewButton);
+	}
+
+	private void handleLogin() {
+		if (username.getText().equals("") || password.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Please fill all the fields");
+		}
