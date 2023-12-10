@@ -97,6 +97,14 @@ public class AddInternationalFlight extends JFrame {
         btnNewButton.setBounds(330, 179, 89, 23);
         contentPane.add(btnNewButton);
 
+        JButton btnNewButton_1 = new JButton("View");
+        btnNewButton_1.addActionListener(e -> {
+            InternationalFlightSchedule obj1 = new InternationalFlightSchedule();
+            obj1.setVisible(true);
+            dispose();
+        });
+        btnNewButton_1.setBounds(330, 213, 89, 23);
+        contentPane.add(btnNewButton_1);
     }
 
     private boolean validateInput() {
@@ -121,6 +129,7 @@ public class AddInternationalFlight extends JFrame {
                 businessSeats.getText(),
                 distance.getText()
         );
+        InternationalFlightSchedule.flightList2.add(obj);
     }
 
     private JTextField createTextField(int x, int y, int width, int height) {
