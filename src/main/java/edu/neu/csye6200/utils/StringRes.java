@@ -1,12 +1,12 @@
 package edu.neu.csye6200.utils;
 
 public enum StringRes {
-    TITLE("Welcome to Airline Management System"),
+    TITLE("Vimaan Airways"),
     BACK("Back");
 
     private final String value;
 
-    private StringRes(String value) {
+    StringRes(String value) {
         this.value = value;
     }
 

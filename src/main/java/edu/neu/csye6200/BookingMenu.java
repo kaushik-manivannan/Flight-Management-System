@@ -8,8 +8,6 @@ import java.awt.*;
 
 public class BookingMenu extends JFrame {
 
-	private JPanel contentPane;
-
 	/**
 	 * Main method to launch the application
 	 */
@@ -30,13 +28,13 @@ public class BookingMenu extends JFrame {
 	public BookingMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 612, 406);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
 		JLabel welcomeLabel = new JLabel(StringRes.TITLE.getValue());
-		welcomeLabel.setFont(new Font("Calibri", Font.BOLD, 18));
+		welcomeLabel.setFont(new Font("Calibri", Font.ITALIC, 18));
 		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		welcomeLabel.setBounds(83, 11, 414, 31);
 		contentPane.add(welcomeLabel);

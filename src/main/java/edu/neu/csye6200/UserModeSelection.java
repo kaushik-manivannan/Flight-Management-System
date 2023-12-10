@@ -8,8 +8,6 @@ import java.awt.*;
 
 public class UserModeSelection extends JFrame {
 
-	private JPanel contentPane;
-
 	/**
 	 * Main method to launch the application
 	 */
@@ -30,13 +28,13 @@ public class UserModeSelection extends JFrame {
 	public UserModeSelection() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 579, 368);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Welcome to  Airline Flight Management System ");
-		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 18));
+		JLabel lblNewLabel = new JLabel(StringRes.TITLE.getValue());
+		lblNewLabel.setFont(new Font("Calibri", Font.ITALIC, 18));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 414, 29);
 		contentPane.add(lblNewLabel);

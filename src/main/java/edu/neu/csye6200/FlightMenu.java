@@ -8,8 +8,6 @@ import java.awt.event.ActionListener;
 
 public class FlightMenu extends JFrame {
 
-	private JPanel contentPane;
-
 
 	/**
 	 * Main method to launch the application
@@ -31,13 +29,13 @@ public class FlightMenu extends JFrame {
 	public FlightMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 612, 406);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout());
 
 		JLabel titleLabel = new JLabel(StringRes.TITLE.getValue());
-		titleLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
+		titleLabel.setFont(new Font("Calibri", Font.ITALIC, 18));
 		titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(titleLabel, BorderLayout.NORTH);
 
