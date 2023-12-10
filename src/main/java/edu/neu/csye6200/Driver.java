@@ -52,3 +52,35 @@ public class Driver extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	}
+
+	private void addWelcomeLabel() {
+		JLabel welcomeLabel = new JLabel("Welcome to Airline Flight Management System ");
+
+		welcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
+		welcomeLabel.setBounds(81, 11, 414, 28);
+		contentPane.add(welcomeLabel);
+	}
+
+	private void addLoginTypeButton() {
+		JButton loginTypeButton = new JButton("Click here to select your login type");
+		loginTypeButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ModeSelection modeSelection = new ModeSelection();
+				modeSelection.setVisible(true);
+			}
+		});
+		loginTypeButton.setBounds(158, 129, 249, 23);
+		contentPane.add(loginTypeButton);
+	}
+
+	private void addExitButton() {
+		JButton exitButton = new JButton("Exit");
+		exitButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		exitButton.setBounds(552, 277, 89, 23);
+		contentPane.add(exitButton);
+	}
