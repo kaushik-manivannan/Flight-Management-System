@@ -198,5 +198,28 @@ public class BookInternationalFlight extends JFrame {
         });
         btnNewButton_1.setBounds(127, 250, 111, 23);
         contentPane.add(btnNewButton_1);
+        //Display the ticket price for the selected flight.
+        JButton btnNewButton_2 = new JButton("View Ticket Price");
+        btnNewButton_2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                double hour=Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 7));
+
+                double price=(hour*20000)+((hour*20000)*10/100);
+                JOptionPane.showMessageDialog(null, "The cost for this flight is: "+price);
+            }
+        });
+        btnNewButton_2.setBounds(371, 250, 131, 23);
+        contentPane.add(btnNewButton_2);
+        //Navigates back to the passenger menu.
+        JButton btnNewButton_3 = new JButton("Back");
+        btnNewButton_3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                PassengerMenu obj=new PassengerMenu();
+                obj.setVisible(true);
+                dispose();
+            }
+        });
+        btnNewButton_3.setBounds(543, 250, 112, 23);
+        contentPane.add(btnNewButton_3);
     }
 }
