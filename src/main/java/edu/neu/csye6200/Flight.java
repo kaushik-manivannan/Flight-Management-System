@@ -2,7 +2,7 @@ package edu.neu.csye6200;
 
 public class Flight {
     
-    private String flightID,timeInterval,date,departDestination,landDestination,distance;
+    private String flightID,timeInterval,date,departDestination,landDestination,economySeats,businessSeats,distance;
 	boolean isBooked;
 	
 	Flight(String flightID,String timeInterval,String date,String departDestination,String landDestination,String economySeats,String businessSeats,String distance)
@@ -12,6 +12,8 @@ public class Flight {
 		this.date=date;
 		this.departDestination=departDestination;
 		this.landDestination=landDestination;
+		this.economySeats=economySeats;
+		this.businessSeats=businessSeats;
 		this.distance=distance;
 	}
 	
@@ -43,6 +45,16 @@ public class Flight {
 	void setLandDestination(String landDestination)
 	{
 		this.landDestination=landDestination;
+	}
+	
+	void setEconomySeats(String economySeats)
+	{
+		this.economySeats=economySeats;
+	}
+	
+	void setBusinessSeats(String businessSeats)
+	{
+		this.businessSeats=businessSeats;
 	}
 	
 	String getDepartTime()
@@ -94,5 +106,5 @@ public class Flight {
 	{
 		return isBooked;
 	}
-
+    
 }
