@@ -55,3 +55,32 @@ public class Login extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	}
+
+	private void addWelcomeLabel() {
+		JLabel welcomeLabel = new JLabel("Welcome to Airline Flight Management System ");
+		welcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		welcomeLabel.setBounds(41, 11, 414, 24);
+		contentPane.add(welcomeLabel);
+	}
+
+	private void addUsernameLabel() {
+		JLabel label1 = new JLabel("Username");
+		label1.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label1.setBounds(10, 46, 83, 17);
+		contentPane.add(label1);
+	}
+
+	private void addPasswordLabel() {
+		JLabel label2 = new JLabel("Password");
+		label2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label2.setBounds(10, 71, 83, 17);
+		contentPane.add(label2);
+	}
+
+	private void addUsernameTextField() {
+		username = new JTextField();
+		username.setBounds(103, 43, 121, 20);
+		contentPane.add(username);
+		username.setColumns(10);
+	}
