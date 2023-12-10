@@ -136,3 +136,25 @@ public class Login extends JFrame {
 		if (username.getText().equals("") || password.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Please fill all the fields");
 		}
+
+
+		for (Passengers x : SignUP.PassengerList) {
+			if (username.getText().equals(x.getUsername()) && password.getText().equals(x.getPassword())) {
+				PassengerMenu obj = new PassengerMenu();
+				obj.setVisible(true);
+				dispose();
+			} else if (username.getText().equals(x.getUsername())) {
+				JOptionPane.showMessageDialog(null, "Incorrect password. Enter Again.");
+			} else {
+				JOptionPane.showMessageDialog(null, "You are not a registered user.");
+			}
+		}
+	}
+
+	private void handleSignUp() {
+		dispose();
+		SignUP obj = new SignUP();
+		obj.setVisible(true);
+	}
+}
+
