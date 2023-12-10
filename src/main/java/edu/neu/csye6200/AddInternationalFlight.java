@@ -1,10 +1,10 @@
 package edu.neu.csye6200;
 
-import javax.swing.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
@@ -86,6 +86,18 @@ public class AddInternationalFlight extends JFrame {
         contentPane.add(btnNewButton);
 
     }
+
+    private boolean validateInput() {
+        return validateNumericTextField(flightID, "Flight ID", 0, Integer.MAX_VALUE)
+                && validateTextField(flightTime, "Time")
+                && validateTextField(landTime, "Date")
+                && validateCityTextField(departCity, "City of Departure")
+                && validateCityTextField(landCity, "City of Arrival")
+                && validateNumericTextField(economySeats, "Economy Seats", 0, 50)
+                && validateNumericTextField(businessSeats, "Business Seats", 0, 10)
+                && validateNumericTextField(distance, "Time Duration", 0, Integer.MAX_VALUE);
+    }
+
     private void addInternationalFlight() {
         internationalFlight obj = new internationalFlight(
                 flightID.getText(),
@@ -105,4 +117,43 @@ public class AddInternationalFlight extends JFrame {
         return textField;
     }
 
+    private boolean validateTextField(JTextField textField, String fieldName) {
+        if (textField.getText().isEmpty()) {
+            showError(fieldName + " cannot be empty.");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean containsOnlyLetters(String text) {
+        return text.matches("^[a-zA-Z\\s]+$");
+    }
+
+    private boolean validateCityTextField(JTextField textField, String fieldName) {
+        if (textField.getText().isEmpty()) {
+            showError(fieldName + " cannot be empty.");
+            return false;
+        } else if (!containsOnlyLetters(textField.getText())) {
+            showError(fieldName + " should contain only letters.");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateNumericTextField(JTextField textField, String fieldName, int minValue, int maxValue) {
+        if (!textField.getText().matches("^\\d+$")) {
+            showError("Please enter a valid integer for " + fieldName + ".");
+            return false;
+        }
+        int value = Integer.parseInt(textField.getText());
+        if (value < minValue || value > maxValue) {
+            showError(fieldName + " should be between " + minValue + " and " + maxValue + ".");
+            return false;
+        }
+        return true;
+    }
+
+    private void showError(String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
 }
