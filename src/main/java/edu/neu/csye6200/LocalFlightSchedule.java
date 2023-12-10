@@ -124,3 +124,38 @@ public class LocalFlightSchedule extends JFrame {
 		btnBack.setBounds(458, 250, 89, 23);
 		contentPane.add(btnBack);
 	}
+
+
+	private void addLabels() {
+		lblLocalFlightSchedule = new JLabel("Local Flight Schedule");
+		lblLocalFlightSchedule.setFont(new Font("Calibri", Font.BOLD, 15));
+		lblLocalFlightSchedule.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLocalFlightSchedule.setBounds(10, 11, 680, 17);
+		contentPane.add(lblLocalFlightSchedule);
+	}
+
+	private void handleDeleteAction() {
+		if (table.getSelectedRowCount() == 1) {
+			DefaultTableModel model = (DefaultTableModel) table.getModel();
+			model.removeRow(table.getSelectedRow());
+			flightList.remove(table.getSelectedRow() + 1);
+			JOptionPane.showMessageDialog(null, "Selected flight has been deleted.");
+		} else if (table.getSelectedRowCount() == 0) {
+			JOptionPane.showMessageDialog(null, "Please select a row first.");
+		} else {
+			JOptionPane.showMessageDialog(null, "Please select one row at a time.");
+		}
+	}
+
+	private void handleEditAction() {
+		if (table.getSelectedRowCount() == 1) {
+			EditLocalFlight obj = new EditLocalFlight();
+			obj.setVisible(true);
+			dispose();
+		} else if (table.getSelectedRowCount() == 0) {
+			JOptionPane.showMessageDialog(null, "Please select a row first");
+		} else {
+			JOptionPane.showMessageDialog(null, "Please select one row at a time");
+		}
+	}
+}
