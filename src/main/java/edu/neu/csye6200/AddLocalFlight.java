@@ -1,5 +1,6 @@
 package edu.neu.csye6200;
 
+import java.awt.EventQueue;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,6 +22,17 @@ public class AddLocalFlight extends JFrame {
 	private JTextField economySeats;
 	private JTextField businessSeats;
 	private JTextField distance;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(() -> {
+			try {
+				AddLocalFlight frame = new AddLocalFlight();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+	}
 
 	public AddLocalFlight() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,6 +96,8 @@ public class AddLocalFlight extends JFrame {
 		});
 		btnNewButton.setBounds(330, 179, 89, 23);
 		contentPane.add(btnNewButton);
+
+	}
 
 	private boolean validateInput() {
 		return validateNumericTextField(flightID, "Flight ID", 0, Integer.MAX_VALUE)
