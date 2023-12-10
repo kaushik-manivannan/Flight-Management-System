@@ -84,3 +84,33 @@ public class Login extends JFrame {
 		contentPane.add(username);
 		username.setColumns(10);
 	}
+
+
+	private void addLoginButton() {
+		JButton loginbtn = new JButton("Login");
+		loginbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				handleLogin();
+			}
+		});
+		loginbtn.setBounds(103, 99, 89, 23);
+		contentPane.add(loginbtn);
+	}
+
+	private void addSignUpButton() {
+		JButton signupbtn = new JButton("Sign Up");
+		signupbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				handleSignUp();
+			}
+		});
+		signupbtn.setBounds(103, 133, 89, 23);
+		contentPane.add(signupbtn);
+	}
+
+	private void addNewLabel() {
+		JLabel label3 = new JLabel("New User?");
+		label3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		label3.setBounds(10, 137, 83, 19);
+		contentPane.add(label3);
+	}
