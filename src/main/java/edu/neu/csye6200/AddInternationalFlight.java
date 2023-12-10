@@ -1,5 +1,6 @@
 package edu.neu.csye6200;
 
+import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -21,6 +22,17 @@ public class AddInternationalFlight extends JFrame {
     private JTextField economySeats;
     private JTextField businessSeats;
     private JTextField distance;
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                AddInternationalFlight frame = new AddInternationalFlight();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
     public AddInternationalFlight() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
