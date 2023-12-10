@@ -43,3 +43,37 @@ public class LocalFlightSchedule extends JFrame {
 			}
 		});
 	}
+
+	public LocalFlightSchedule() {
+		setMainFrameProperties();
+		createContentPane();
+		initializeTable();
+		addButtons();
+		addLabels();
+	}
+
+	private void setMainFrameProperties() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 938, 423);
+	}
+
+	private void createContentPane() {
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+	}
+
+	private void initializeTable() {
+		String[] columns = {"Flight ID", "Time", "Date", "Departure Destination",
+				"Land Destination", "Economy Seats", "Business Seats", "Time Duration"};
+
+		DefaultTableModel obj = new DefaultTableModel(columns, 0);
+
+		for (Flight flight : LocalFlightSchedule.flightList) {
+			Object[] update = {flight.getFlightID(), flight.getDepartTime(), flight.getLandTime(),
+					flight.getDepartDestination(), flight.getLandDestination(),
+					flight.getEconomySeats(), flight.getBusinessSeats(), flight.getDistance()};
+
+			obj.addRow(update);
+		}
