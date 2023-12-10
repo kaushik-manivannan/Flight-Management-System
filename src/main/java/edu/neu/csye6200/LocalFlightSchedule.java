@@ -77,3 +77,50 @@ public class LocalFlightSchedule extends JFrame {
 
 			obj.addRow(update);
 		}
+
+
+		table = new JTable(obj);
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(10, 39, 764, 200);
+		contentPane.add(scrollPane);
+	}
+
+	private void addButtons() {
+		btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddLocalFlight obj = new AddLocalFlight();
+				obj.setVisible(true);
+				dispose();
+			}
+		});
+		btnAdd.setBounds(161, 250, 89, 23);
+		contentPane.add(btnAdd);
+
+		btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(e -> {
+			handleDeleteAction();
+		});
+		btnDelete.setBounds(260, 250, 89, 23);
+		contentPane.add(btnDelete);
+
+		btnEdit = new JButton("Edit");
+		btnEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				handleEditAction();
+			}
+		});
+		btnEdit.setBounds(359, 250, 89, 23);
+		contentPane.add(btnEdit);
+
+		btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Menu obj = new Menu();
+				obj.setVisible(true);
+				dispose();
+			}
+		});
+		btnBack.setBounds(458, 250, 89, 23);
+		contentPane.add(btnBack);
+	}
