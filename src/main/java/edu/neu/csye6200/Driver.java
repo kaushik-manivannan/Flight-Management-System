@@ -84,3 +84,35 @@ public class Driver extends JFrame {
 		exitButton.setBounds(552, 277, 89, 23);
 		contentPane.add(exitButton);
 	}
+
+	private void initializeFlightData() {
+		Flight localFlight1 = new Flight("BK001", "10:00-12:00", "20-12-2021", "Birmingham", "London", "30", "10", "2");
+		Flight localFlight2 = new Flight("B002", "01:00-03:00", "20-12-2021", "London", "Manchester", "25", "07", "4");
+		Flight localFlight3 = new Flight("B003", "10:00-01:00", "20-12-2021", "Leeds", "Birmingham", "22", "06", "3");
+		Flight localFlight4 = new Flight("E004", "02:00-05:00", "20-12-2021", "Manchester", "Bristol", "18", "05", "3");
+		Flight localFlight5 = new Flight("T005", "10:00-12:00", "20-12-2021", "Liverpool", "Leeds", "21", "09", "2");
+		Flight localFlight6 = new Flight("A006", "10:00-12:00", "20-12-2021", "Bristol", "Manchester", "17", "08", "2");
+
+		LocalFlightSchedule.flightList.add(localFlight1);
+		LocalFlightSchedule.flightList.add(localFlight2);
+		LocalFlightSchedule.flightList.add(localFlight3);
+		LocalFlightSchedule.flightList.add(localFlight4);
+		LocalFlightSchedule.flightList.add(localFlight5);
+		LocalFlightSchedule.flightList.add(localFlight6);
+
+		InternationalFlight internationalFlight1 = new InternationalFlight("PC001", "10:00-12:00", "20-12-2021", "Manchester", "Oslo", "30", "10", "2");
+		InternationalFlight internationalFlight2 = new InternationalFlight("PA002", "01:00-03:00", "20-12-2021", "Brussels", "Washington", "25", "07", "4");
+		InternationalFlight internationalFlight3 = new InternationalFlight("PI003", "10:00-01:00", "20-12-2021", "Boston", "Miami", "22", "02", "3");
+		InternationalFlight internationalFlight4 = new InternationalFlight("PS004", "02:00-05:00", "20-12-2021", "Chicago", "Barcelona", "18", "00", "3");
+		InternationalFlight internationalFlight5 = new InternationalFlight("PF005", "10:00-12:00", "20-12-2021", "Vegas", "Osaka", "21", "09", "2");
+		InternationalFlight internationalFlight6 = new InternationalFlight("PT006", "10:00-12:00", "20-12-2021", "Los Angeles", "Toronto", "17", "01", "2");
+
+		InternationalFlightSchedule.flightList2.add(internationalFlight1);
+		InternationalFlightSchedule.flightList2.add(internationalFlight2);
+		InternationalFlightSchedule.flightList2.add(internationalFlight3);
+		InternationalFlightSchedule.flightList2.add(internationalFlight4);
+		InternationalFlightSchedule.flightList2.add(internationalFlight5);
+		InternationalFlightSchedule.flightList2.add(internationalFlight6);
+	}
+}
+
