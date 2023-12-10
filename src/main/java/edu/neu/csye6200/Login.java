@@ -28,3 +28,30 @@ public class Login extends JFrame {
 			}
 		});
 	}
+
+	public Login() {
+		setMainFrameProperties();
+		createContentPane();
+		addWelcomeLabel();
+		addUsernameLabel();
+		addPasswordLabel();
+		addUsernameTextField();
+		addLoginButton();
+		addSignUpButton();
+		addNewLabel();
+		addPasswordField();
+		addBackButton();
+	}
+
+	private void setMainFrameProperties() {
+
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 590, 401);
+	}
+
+	private void createContentPane() {
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+	}
