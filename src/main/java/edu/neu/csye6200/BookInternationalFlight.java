@@ -1,4 +1,6 @@
 package edu.neu.csye6200;
+import edu.neu.csye6200.utils.StringRes;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -45,6 +47,7 @@ public class BookInternationalFlight extends JFrame {
         // Setting up the frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 872, 433);
+        setTitle("Book International Flight");
         // Creating the content pane
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -209,7 +212,7 @@ public class BookInternationalFlight extends JFrame {
         btnNewButton_2.setBounds(371, 250, 131, 23);
         contentPane.add(btnNewButton_2);
         //Navigates back to the passenger menu.
-        JButton btnNewButton_3 = new JButton("Back");
+        JButton btnNewButton_3 = new JButton(StringRes.BACK.getValue());
         btnNewButton_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 BookingMenu obj=new BookingMenu();

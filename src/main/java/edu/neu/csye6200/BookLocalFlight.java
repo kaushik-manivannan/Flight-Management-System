@@ -1,4 +1,6 @@
 package edu.neu.csye6200;
+import edu.neu.csye6200.utils.StringRes;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -43,6 +45,7 @@ public class  BookLocalFlight extends JFrame {
     public BookLocalFlight() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 843, 419);
+        setTitle("Book Local Flight");
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
@@ -191,7 +194,7 @@ public class  BookLocalFlight extends JFrame {
         btnNewButton_2.setBounds(371, 250, 136, 23);
         contentPane.add(btnNewButton_2);
 
-        JButton btnNewButton_3 = new JButton("Back");
+        JButton btnNewButton_3 = new JButton(StringRes.BACK.getValue());
         btnNewButton_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 BookingMenu obj=new BookingMenu();
