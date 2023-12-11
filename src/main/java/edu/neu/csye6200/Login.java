@@ -1,12 +1,12 @@
 package edu.neu.csye6200;
 
-import java.awt.EventQueue;
-
+import java.awt.EventQueue;//it is an independent thread
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.util.Arrays;
 
 public class Login extends JFrame {
 
@@ -18,6 +18,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(() -> {
             try {
                 Login frame = new Login();
+				frame.setTitle("Login Page");
                 frame.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -129,8 +130,11 @@ public class Login extends JFrame {
 	}
 
 	private void handleLogin() {
-		if (username.getText().equals("") || password.getText().equals("")) {
-			JOptionPane.showMessageDialog(null, "Please fill all the fields");
+		String name = username.getName().trim();//1 19:32
+		String pass = Arrays.toString(password.getPassword()); //2
+		if (user.length() == 0 || pass.length() == 0) //3
+		{
+			JOptionPane.showMessageDialog(null,"Enter all the fields","Warning",JOptionPane.WARNING_MESSAGE);
 		}
 
 
@@ -140,9 +144,9 @@ public class Login extends JFrame {
 				obj.setVisible(true);
 				dispose();
 			} else if (username.getText().equals(x.getUsername())) {
-				JOptionPane.showMessageDialog(null, "Incorrect password. Enter Again.");
+				JOptionPane.showMessageDialog(null,"Incorrect Password","Warning",JOptionPane.WARNING_MESSAGE);
 			} else {
-				JOptionPane.showMessageDialog(null, "You are not a registered user.");
+				JOptionPane.showMessageDialog(null,"You are not a registered user","Warning",JOptionPane.WARNING_MESSAGE);
 			}
 		}
 	}
