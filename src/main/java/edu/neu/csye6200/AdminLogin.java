@@ -1,6 +1,8 @@
 package edu.neu.csye6200;
 
 
+import edu.neu.csye6200.utils.StringRes;
+
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -43,6 +45,7 @@ public class AdminLogin extends JFrame {
         // Setting up the frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 558, 389);
+        setTitle("Admin Login");
         // Creating the content pane
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -50,7 +53,7 @@ public class AdminLogin extends JFrame {
         contentPane.setLayout(null);
 
         // Adding GUI components
-        JLabel titleLabel = new JLabel("Welcome to Airline Management System");
+        JLabel titleLabel = new JLabel(StringRes.TITLE.getValue());
         titleLabel.setForeground(Color.BLACK);
         titleLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -91,7 +94,7 @@ public class AdminLogin extends JFrame {
         loginButton.setBounds(237, 176, 89, 23);
         contentPane.add(loginButton);
 
-        JButton backButton = new JButton("Back");
+        JButton backButton = new JButton(StringRes.BACK.getValue());
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 dispose();
