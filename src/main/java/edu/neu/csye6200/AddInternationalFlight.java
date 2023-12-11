@@ -37,6 +37,7 @@ public class AddInternationalFlight extends JFrame {
     public AddInternationalFlight() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 562, 413);
+        setTitle("Add International Flight");
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
