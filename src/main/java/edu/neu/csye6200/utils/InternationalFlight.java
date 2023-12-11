@@ -1,10 +1,10 @@
-package edu.neu.csye6200;
+package edu.neu.csye6200.utils;
 
-public class InternationalFlight {
+public class InternationalFlight implements Flight{
     private String flightID,timeDuration,date,departDestination,landDestination,economySeats,businessSeats,distance;
-	boolean isBooked;
+	public boolean isBooked;
 	
-	InternationalFlight(String flightID,String departTime,String landTime,String departDestination,String landDestination,String economySeats,String businessSeats,String distance)
+	public InternationalFlight(String flightID,String departTime,String landTime,String departDestination,String landDestination,String economySeats,String businessSeats,String distance)
 	{
 		this.flightID=flightID;
 		this.timeDuration=departTime;
@@ -14,6 +14,18 @@ public class InternationalFlight {
 		this.economySeats=economySeats;
 		this.businessSeats=businessSeats;
 		this.distance=distance;
+	}
+
+	public InternationalFlight(String csvString) {
+		String[] fields = csvString.split(",");
+		this.flightID=fields[0];
+		this.timeDuration=fields[1];
+		this.date=fields[2];
+		this.departDestination=fields[3];
+		this.landDestination=fields[4];
+		this.economySeats=fields[5];
+		this.businessSeats=fields[6];
+		this.distance=fields[7];
 	}
 	
 	public String getTimeDuration() {
@@ -36,27 +48,29 @@ public class InternationalFlight {
 		return isBooked;
 	}
 
-	void setFlightID(String flightID)
+	@Override
+	public void setFlightID(String flightID)
 	{
 		this.flightID=flightID;
 	}
 	
-	String getFlightID()
+	@Override
+	public String getFlightID()
 	{
 		return flightID;
 	}
 	
-	void setDepartTime(String departTime)
+	public void setDepartTime(String departTime)
 	{
 		this.timeDuration=departTime;
 	}
 	
-	void setLandTime(String landTime)
+	public void setLandTime(String landTime)
 	{
 		this.date=landTime;
 	}
 	
-	void setDepartDestination(String departDestination)
+	public void setDepartDestination(String departDestination)
 	{
 		this.departDestination=departDestination;
 	}
@@ -66,62 +80,62 @@ public class InternationalFlight {
 		this.landDestination=landDestination;
 	}
 	
-	void setEconomySeats(String economySeats)
+	public void setEconomySeats(String economySeats)
 	{
 		this.economySeats=economySeats;
 	}
 	
-	void setBusinessSeats(String businessSeats)
+	public void setBusinessSeats(String businessSeats)
 	{
 		this.businessSeats=businessSeats;
 	}
 	
-	String getDepartTime()
+	public String getDepartTime()
 	{
 		return timeDuration;
 	}
 	
-	String getLandTime()
+	public String getLandTime()
 	{
 		return date;
 	}
 	
-	String getDepartDestination()
+	public String getDepartDestination()
 	{
 		return departDestination;
 	}
 	
-	String getLandDestination()
+	public String getLandDestination()
 	{
 		return landDestination;
 	}
 	
-	String getEconomySeats()
+	public String getEconomySeats()
 	{
 		return economySeats;
 	}
 	
-	String getBusinessSeats()
+	public String getBusinessSeats()
 	{
 		return businessSeats;
 	}
 	
-	void setDistance(String distance)
+	public void setDistance(String distance)
 	{
 		this.distance=distance;
 	}
 	
-	String getDistance()
+	public String getDistance()
 	{
 		return distance;
 	}
 	
-	void setBooked(boolean isBooked)
+	public void setBooked(boolean isBooked)
 	{
 		this.isBooked=isBooked;
 	}
 	
-	boolean getBooked()
+	public boolean getBooked()
 	{
 		return isBooked;
 	}
