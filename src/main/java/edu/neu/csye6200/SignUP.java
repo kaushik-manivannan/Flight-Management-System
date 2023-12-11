@@ -1,11 +1,11 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.StringRes;
+
 import javax.swing.*;
-import java.awt.Color;
+import javax.swing.border.EmptyBorder;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class SignUP extends JFrame {
@@ -33,13 +33,13 @@ public class SignUP extends JFrame {
     public SignUP() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 636, 436);
+        setTitle("SignUp Here");
         contentPane = new JPanel();
-        contentPane.setBackground(Color.PINK);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Welcome to Airline Flight Management System");
+        JLabel lblNewLabel = new JLabel(StringRes.TITLE.getValue());
         lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
         lblNewLabel.setBounds(152, 11, 389, 29);
         contentPane.add(lblNewLabel);
@@ -90,7 +90,7 @@ public class SignUP extends JFrame {
         btnNewButton.setBounds(387, 348, 89, 23);
         contentPane.add(btnNewButton);
 
-        JButton btnNewButton_1 = new JButton("Back");
+        JButton btnNewButton_1 = new JButton(StringRes.BACK.getValue());
         btnNewButton_1.addActionListener(e -> backToLogin());
         btnNewButton_1.setBounds(503, 348, 89, 23);
         contentPane.add(btnNewButton_1);

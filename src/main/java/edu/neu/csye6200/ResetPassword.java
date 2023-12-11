@@ -1,10 +1,10 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.StringRes;
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 public class ResetPassword extends JFrame {
 
@@ -39,8 +40,8 @@ public class ResetPassword extends JFrame {
     public ResetPassword() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 592, 382);
+        setTitle("Reset your Password");
         contentPane = new JPanel();
-//        contentPane.setBackground(Color.PINK);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -146,7 +147,7 @@ public class ResetPassword extends JFrame {
         contentPane.add(oldPassword);
 
         // Button to go back
-        JButton btnNewButton_2 = new JButton("Back");
+        JButton btnNewButton_2 = new JButton(StringRes.BACK.getValue());
         btnNewButton_2.addActionListener(e -> dispose());
         btnNewButton_2.setBounds(479, 298, 89, 23);
         contentPane.add(btnNewButton_2);
