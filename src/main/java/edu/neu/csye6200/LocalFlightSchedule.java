@@ -16,17 +16,18 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LocalFlightSchedule extends JFrame {
 
 	private JPanel contentPane;
-	private static JTable table;
+	static JTable table;
 	private JButton btnAdd;
 	private JButton btnDelete;
 	private JButton btnEdit;
 	private JLabel lblLocalFlightSchedule;
 	private JButton btnBack;
-	static ArrayList<Flight> flightList = new ArrayList<Flight>();
+	static List<Flight> flightList = new ArrayList<Flight>();
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

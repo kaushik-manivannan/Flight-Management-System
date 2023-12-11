@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SignUP extends JFrame {
 
@@ -15,7 +16,7 @@ public class SignUP extends JFrame {
     private JTextField cnic;
     private JPasswordField password;
     private JPasswordField confirmPassword;
-    static ArrayList<Passengers> PassengerList = new ArrayList<Passengers>();
+    static List<Passengers> PassengerList = new ArrayList<Passengers>();
     static JTextField username;
     private JTextField passport;
 

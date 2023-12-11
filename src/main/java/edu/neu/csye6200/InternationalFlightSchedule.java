@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
+import java.util.List;
 
 public class InternationalFlightSchedule extends JFrame {
 
@@ -27,7 +28,7 @@ public class InternationalFlightSchedule extends JFrame {
 	private JButton btnNewButton_2;
 	private JLabel lblNewLabel;
 	private JButton btnNewButton_3;
-	static ArrayList<internationalFlight> flightList2=new ArrayList<internationalFlight>();
+	static List<InternationalFlight> flightList2=new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -120,7 +121,7 @@ public class InternationalFlightSchedule extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (table.getSelectedRowCount()==1)
 				{
-					EditFlight2 obj=new EditFlight2();
+					EditInternationalFlight obj=new EditInternationalFlight();
 					obj.setVisible(true);
 					dispose();
 				}
