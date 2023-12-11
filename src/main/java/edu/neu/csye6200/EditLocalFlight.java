@@ -1,4 +1,6 @@
 package edu.neu.csye6200;
+import edu.neu.csye6200.utils.DomesticFlight;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -49,13 +51,13 @@ public class EditLocalFlight extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Edit Flight");
+        JLabel lblNewLabel = new JLabel("Edit DomesticFlight");
         lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 14));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setBounds(10, 11, 414, 20);
         contentPane.add(lblNewLabel);
 
-        JLabel lblNewLabel_1 = new JLabel("Flight ID");
+        JLabel lblNewLabel_1 = new JLabel("DomesticFlight ID");
         lblNewLabel_1.setBounds(10, 36, 113, 14);
         contentPane.add(lblNewLabel_1);
 
@@ -63,7 +65,7 @@ public class EditLocalFlight extends JFrame {
         lblNewLabel_2.setBounds(10, 61, 113, 14);
         contentPane.add(lblNewLabel_2);
 
-        JLabel lblNewLabel_3 = new JLabel("Flight Date");
+        JLabel lblNewLabel_3 = new JLabel("DomesticFlight Date");
         lblNewLabel_3.setBounds(10, 86, 113, 14);
         contentPane.add(lblNewLabel_3);
 
@@ -160,9 +162,9 @@ public class EditLocalFlight extends JFrame {
                     LocalFlightSchedule.table.setValueAt(businessSeatsField.getText(),row , 6);
                     LocalFlightSchedule.table.setValueAt(distanceField.getText(), row , 7);
 
-                    Flight flight=new Flight(idField.getText() , timeField.getText() , dateField.getText() , departCityField.getText() , landCityField.getText() , economySeatsField.getText()
+                    DomesticFlight domesticFlight =new DomesticFlight(idField.getText() , timeField.getText() , dateField.getText() , departCityField.getText() , landCityField.getText() , economySeatsField.getText()
                             , businessSeatsField.getText() , distanceField.getText());
-                    LocalFlightSchedule.flightList.set((row), flight);
+                    LocalFlightSchedule.domesticFlightList.set((row), domesticFlight);
                     JOptionPane.showMessageDialog(null, "Updated Successfully");
 
                     LocalFlightSchedule obj=new LocalFlightSchedule();
@@ -173,6 +175,14 @@ public class EditLocalFlight extends JFrame {
         });
         btnNewButton.setBounds(255, 207, 89, 23);
         contentPane.add(btnNewButton);
+
+        JButton cancel = new JButton("Cancel");
+        cancel.addActionListener(e -> {
+            dispose();
+            new InternationalFlightSchedule().setVisible(true);
+        });
+        cancel.setBounds(255, 240, 89, 23);
+        contentPane.add(cancel);
 
         JLabel lblNewLabel_8 = new JLabel("Time Duration");
         lblNewLabel_8.setBounds(10, 211, 113, 14);
