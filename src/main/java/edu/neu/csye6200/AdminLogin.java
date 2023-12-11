@@ -1,6 +1,7 @@
 package edu.neu.csye6200;
 
 
+import edu.neu.csye6200.utils.Admin;
 import edu.neu.csye6200.utils.StringRes;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class AdminLogin extends JFrame {
         // Adding GUI components
         JLabel titleLabel = new JLabel(StringRes.TITLE.getValue());
         titleLabel.setForeground(Color.BLACK);
-        titleLabel.setFont(new Font("Calibri", Font.PLAIN, 18));
+        titleLabel.setFont(new Font("Calibri", Font.ITALIC, 18));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setBounds(10, 11, 457, 34);
         contentPane.add(titleLabel);
@@ -86,19 +87,14 @@ public class AdminLogin extends JFrame {
 
         // Adding action listeners to buttons
         JButton loginButton = new JButton("Login");
-        loginButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                handleLogin();
-            }
-        });
+        loginButton.addActionListener(e -> handleLogin());
         loginButton.setBounds(237, 176, 89, 23);
         contentPane.add(loginButton);
 
         JButton backButton = new JButton(StringRes.BACK.getValue());
-        backButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
+        backButton.addActionListener(e -> {
+            dispose();
+            new UserModeSelection().setVisible(true);
         });
         backButton.setBounds(367, 176, 89, 23);
         contentPane.add(backButton);

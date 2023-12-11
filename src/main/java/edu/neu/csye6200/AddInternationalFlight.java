@@ -1,5 +1,7 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.InternationalFlight;
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -43,13 +45,13 @@ public class AddInternationalFlight extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Add International Flight");
+        JLabel lblNewLabel = new JLabel("Add International DomesticFlight");
         lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 15));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setBounds(10, 11, 414, 14);
         contentPane.add(lblNewLabel);
 
-        JLabel lblNewLabel_1 = new JLabel("Flight ID");
+        JLabel lblNewLabel_1 = new JLabel("DomesticFlight ID");
         lblNewLabel_1.setBounds(20, 36, 101, 14);
         contentPane.add(lblNewLabel_1);
 
@@ -109,7 +111,7 @@ public class AddInternationalFlight extends JFrame {
     }
 
     private boolean validateInput() {
-        return validateNumericTextField(flightID, "Flight ID", 0, Integer.MAX_VALUE)
+        return validateNumericTextField(flightID, "DomesticFlight ID", 0, Integer.MAX_VALUE)
                 && validateTextField(flightTime, "Time")
                 && validateTextField(landTime, "Date")
                 && validateCityTextField(departCity, "City of Departure")
