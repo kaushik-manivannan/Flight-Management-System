@@ -1,10 +1,10 @@
 package edu.neu.csye6200;
 
-public class internationalFlight {
+public class InternationalFlight {
     private String flightID,timeDuration,date,departDestination,landDestination,economySeats,businessSeats,distance;
 	boolean isBooked;
 	
-	internationalFlight(String flightID,String departTime,String landTime,String departDestination,String landDestination,String economySeats,String businessSeats,String distance)
+	InternationalFlight(String flightID,String departTime,String landTime,String departDestination,String landDestination,String economySeats,String businessSeats,String distance)
 	{
 		this.flightID=flightID;
 		this.timeDuration=departTime;

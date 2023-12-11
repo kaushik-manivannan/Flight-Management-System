@@ -158,7 +158,7 @@ public class EditInternationalFlight extends JFrame {
                     InternationalFlightSchedule.table.setValueAt(businessSeatsField.getText(), InternationalFlightSchedule.table.getSelectedRow() , 6);
                     InternationalFlightSchedule.table.setValueAt(travelDistanceField.getText(), InternationalFlightSchedule.table.getSelectedRow() , 7);
 
-                    internationalFlight internationalFlight=new internationalFlight(idField.getText() , timeField.getText() , dateField.getText() , departCityField.getText() , landCityField.getText() , economySeatsField.getText()
+                    InternationalFlight internationalFlight=new InternationalFlight(idField.getText() , timeField.getText() , dateField.getText() , departCityField.getText() , landCityField.getText() , economySeatsField.getText()
                             , businessSeatsField.getText() , travelDistanceField.getText());
                     InternationalFlightSchedule.flightList2.set((InternationalFlightSchedule.table.getSelectedRow()), internationalFlight);
                     JOptionPane.showMessageDialog(null, "Updated Successfully");

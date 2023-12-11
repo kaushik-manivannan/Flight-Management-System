@@ -119,7 +119,7 @@ public class AddInternationalFlight extends JFrame {
     }
 
     private void addInternationalFlight() {
-        internationalFlight obj = new internationalFlight(
+        InternationalFlight obj = new InternationalFlight(
                 flightID.getText(),
                 flightTime.getText(),
                 landTime.getText(),
