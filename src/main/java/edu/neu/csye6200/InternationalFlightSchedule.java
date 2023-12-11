@@ -146,7 +146,7 @@ public class InternationalFlightSchedule extends JFrame {
 		btnNewButton_3 = new JButton("Back");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Menu obj=new Menu();
+				FlightMenu obj=new FlightMenu();
 				obj.setVisible(true);
 				dispose();
 			}

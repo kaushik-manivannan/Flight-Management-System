@@ -1,5 +1,4 @@
 package edu.neu.csye6200;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,7 +14,6 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import java.awt.Color;
 
 public class BookInternationalFlight extends JFrame {
 
@@ -214,7 +212,7 @@ public class BookInternationalFlight extends JFrame {
         JButton btnNewButton_3 = new JButton("Back");
         btnNewButton_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PassengerMenu obj=new PassengerMenu();
+                BookingMenu obj=new BookingMenu();
                 obj.setVisible(true);
                 dispose();
             }

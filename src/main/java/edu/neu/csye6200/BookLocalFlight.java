@@ -1,5 +1,4 @@
 package edu.neu.csye6200;
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -16,7 +15,6 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
 
 public class  BookLocalFlight extends JFrame {
 
@@ -196,7 +194,7 @@ public class  BookLocalFlight extends JFrame {
         JButton btnNewButton_3 = new JButton("Back");
         btnNewButton_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                PassengerMenu obj=new PassengerMenu();
+                BookingMenu obj=new BookingMenu();
                 obj.setVisible(true);
                 dispose();
             }

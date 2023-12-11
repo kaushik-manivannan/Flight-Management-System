@@ -6,12 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
 
 public class Driver extends JFrame {
 
@@ -66,8 +64,8 @@ public class Driver extends JFrame {
 		JButton loginTypeButton = new JButton("Click here to select your login type");
 		loginTypeButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ModeSelection modeSelection = new ModeSelection();
-				modeSelection.setVisible(true);
+				UserModeSelection userModeSelection = new UserModeSelection();
+				userModeSelection.setVisible(true);
 			}
 		});
 		loginTypeButton.setBounds(158, 129, 249, 23);

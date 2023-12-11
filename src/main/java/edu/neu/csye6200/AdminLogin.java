@@ -113,8 +113,8 @@ public class AdminLogin extends JFrame {
         // Looping through adminList for authentication
         for (Admin admin : adminList) {
             if (enteredUsername.equals(admin.getUsername()) && enteredPassword.equals(admin.getPassword())) {
-                Menu menu = new Menu();
-                menu.setVisible(true);
+                FlightMenu flightMenu = new FlightMenu();
+                flightMenu.setVisible(true);
                 dispose();
                 return;
             } else if (enteredUsername.equals(admin.getUsername())) {

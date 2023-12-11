@@ -15,9 +15,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
-import java.awt.Color;
-import java.util.ArrayList;
-import java.awt.BorderLayout;
 import java.util.ArrayList;
 
 public class LocalFlightSchedule extends JFrame {
@@ -116,7 +113,7 @@ public class LocalFlightSchedule extends JFrame {
 		btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Menu obj = new Menu();
+				FlightMenu obj = new FlightMenu();
 				obj.setVisible(true);
 				dispose();
 			}

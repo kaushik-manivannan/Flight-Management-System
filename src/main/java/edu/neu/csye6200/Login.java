@@ -1,13 +1,11 @@
 package edu.neu.csye6200;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
 import java.awt.Font;
 
 public class Login extends JFrame {
@@ -140,7 +138,7 @@ public class Login extends JFrame {
 
 		for (Passengers x : SignUP.PassengerList) {
 			if (username.getText().equals(x.getUsername()) && password.getText().equals(x.getPassword())) {
-				PassengerMenu obj = new PassengerMenu();
+				BookingMenu obj = new BookingMenu();
 				obj.setVisible(true);
 				dispose();
 			} else if (username.getText().equals(x.getUsername())) {
