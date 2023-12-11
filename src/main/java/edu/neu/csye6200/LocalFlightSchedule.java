@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class LocalFlightSchedule extends JFrame {
 
 	private JPanel contentPane;
-	private static JTable table;
+	static JTable table;
 	private JButton btnAdd;
 	private JButton btnDelete;
 	private JButton btnEdit;
