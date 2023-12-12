@@ -54,4 +54,27 @@ public static void main(String[] args) {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
+        // Adding GUI components such as labels, buttons, and table
+        JLabel lblNewLabel = new JLabel("International DomesticFlight Schedule");
+        lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 15));
+        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel.setBounds(10, 11, 764, 23);
+        contentPane.add(lblNewLabel);
+
+        String[] columns = {"DomesticFlight ID", "Time", "Date", "Daparture",
+                "Arrival" , "Economy class Seats" , "Business class Seats" , "Time Duration"};
+
+        DefaultTableModel obj=new DefaultTableModel(columns,0);
+
+        for (int i = 0; i< InternationalFlightSchedule.flightList2.size() ; i++)
+        {
+
+            Object[] update= {InternationalFlightSchedule.flightList2.get(i).getFlightID() , InternationalFlightSchedule.flightList2.get(i).getDepartTime() , InternationalFlightSchedule.flightList2.get(i).getLandTime()
+                    , InternationalFlightSchedule.flightList2.get(i).getDepartDestination() , InternationalFlightSchedule.flightList2.get(i).getLandDestination() ,
+                    InternationalFlightSchedule.flightList2.get(i).getEconomySeats() , InternationalFlightSchedule.flightList2.get(i).getBusinessSeats() , InternationalFlightSchedule.flightList2.get(i).getDistance()};
+
+            obj.addRow(update);
+        }
+
+
 
