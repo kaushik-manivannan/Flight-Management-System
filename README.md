@@ -37,7 +37,7 @@ Compile and run the Driver class, which serves as the entry point for the applic
 The user will be prompted to select the user type (Admin or Passenger).
 ### Admin Mode:
 
-To access admin functionalities, log in with admin credentials.
+To access admin functionalities, log in with admin credentials (username: admin , password: admin).
 Admins can manage flight schedules, including adding, editing, and deleting flights.
 ### Passenger Mode:
 
