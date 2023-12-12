@@ -1,5 +1,7 @@
 package edu.neu.csye6200;
+import edu.neu.csye6200.utils.CSVReader;
 import edu.neu.csye6200.utils.InternationalFlight;
+import edu.neu.csye6200.utils.StringRes;
 
 import java.awt.EventQueue;
 
@@ -163,8 +165,9 @@ public class EditInternationalFlight extends JFrame {
                     InternationalFlight internationalFlight=new InternationalFlight(idField.getText() , timeField.getText() , dateField.getText() , departCityField.getText() , landCityField.getText() , economySeatsField.getText()
                             , businessSeatsField.getText() , travelDistanceField.getText());
                     InternationalFlightSchedule.flightList2.set((InternationalFlightSchedule.table.getSelectedRow()), internationalFlight);
+                    CSVReader.clearFile(StringRes.INTERNATIONAL);
+                    CSVReader.writeInternationalFlightsToFile(StringRes.INTERNATIONAL, InternationalFlightSchedule.flightList2);
                     JOptionPane.showMessageDialog(null, "Updated Successfully");
-
                     InternationalFlightSchedule obj=new InternationalFlightSchedule();
                     obj.setVisible(true);
                     dispose();
