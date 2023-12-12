@@ -84,6 +84,81 @@ public class LocalFlightSchedule extends JFrame {
         contentPane.add(scrollPane);
     }
 
+    private void addButtons() {
+        btnAdd = new JButton("Add");
+        btnAdd.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                AddLocalFlight obj = new AddLocalFlight();
+                obj.setVisible(true);
+                dispose();
+            }
+        });
+        btnAdd.setBounds(161, 250, 89, 23);
+        contentPane.add(btnAdd);
+
+        btnDelete = new JButton("Delete");
+        btnDelete.addActionListener(e -> {
+            handleDeleteAction();
+        });
+        btnDelete.setBounds(260, 250, 89, 23);
+        contentPane.add(btnDelete);
+
+        btnEdit = new JButton("Edit");
+        btnEdit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                handleEditAction();
+            }
+        });
+        btnEdit.setBounds(359, 250, 89, 23);
+        contentPane.add(btnEdit);
+
+        btnBack = new JButton("Back");
+        btnBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                FlightMenu obj = new FlightMenu();
+                obj.setVisible(true);
+                dispose();
+            }
+        });
+        btnBack.setBounds(458, 250, 89, 23);
+        contentPane.add(btnBack);
+    }
+
+
+    private void addLabels() {
+        lblLocalFlightSchedule = new JLabel("Local DomesticFlight Schedule");
+        lblLocalFlightSchedule.setFont(new Font("Calibri", Font.BOLD, 15));
+        lblLocalFlightSchedule.setHorizontalAlignment(SwingConstants.CENTER);
+        lblLocalFlightSchedule.setBounds(10, 11, 680, 17);
+        contentPane.add(lblLocalFlightSchedule);
+    }
+
+    private void handleDeleteAction() {
+        if (table.getSelectedRowCount() == 1) {
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+            model.removeRow(table.getSelectedRow());
+            domesticFlightList.remove(table.getSelectedRow() + 1);
+            JOptionPane.showMessageDialog(null, "Selected flight has been deleted.");
+        } else if (table.getSelectedRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select one row at a time.");
+        }
+    }
+
+    private void handleEditAction() {
+        if (table.getSelectedRowCount() == 1) {
+            EditLocalFlight obj = new EditLocalFlight();
+            obj.setVisible(true);
+            dispose();
+        } else if (table.getSelectedRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row first");
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select one row at a time");
+        }
+    }
+}
+
 
 
 
