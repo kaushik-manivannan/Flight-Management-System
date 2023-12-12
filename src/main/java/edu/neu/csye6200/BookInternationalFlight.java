@@ -108,6 +108,96 @@ public static void main(String[] args) {
             }
         });
 
+        btnNewButton.setBounds(249, 250, 112, 23);
+        contentPane.add(btnNewButton);
+        //Booking of a flight based on user input.
+        JButton btnNewButton_1 = new JButton("Book DomesticFlight");
+        btnNewButton_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (flightTable.getSelectedRowCount()==1)
+                {
+                    String visachoice= JOptionPane.showInputDialog(null,"Enter Y if you have Visa and N if you don't have Visa",null);
+                    if(visachoice.equals("N")) {
+                        JOptionPane.showMessageDialog(null,"Sorry you can't book a flight");
+                    }
+                    else if(visachoice.equals("Y")){
+                        String userchoice= JOptionPane.showInputDialog(null,"Enter 1 for Economy class and 2 for Business Class",null);
+
+                        int selectClass = Integer.valueOf(userchoice);
+
+                        switch (selectClass)
+                        {
+                            case 1:
+                            {
+                                for (Passengers x: SignUP.PassengerList)
+                                {
+                                    if (x.getUsername().equals(SignUP.username.getText()))
+                                    {
+                                        if(x.getBooked()==true)
+                                        {
+                                            JOptionPane.showMessageDialog(null, "Your flight has already been booked against your Passport: "+x.getPassport());
+                                        }
+                                        if (Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 5)) > 0 )
+                                        {
+                                            x.setBooked(true);
+                                            JOptionPane.showMessageDialog(null, "Your flight has been booked against your Passport: "+x.getPassport());
+                                        }
+                                        else
+                                        {
+                                            JOptionPane.showMessageDialog(null, "This flight has no available seats in Economy class.");
+                                        }
+
+                                    }
+                                }
+                                break;
+                            }
+                            case 2:
+                            {
+                                for (Passengers x: SignUP.PassengerList)
+                                {
+                                    if (x.getUsername().equals(SignUP.username.getText()))
+                                    {
+                                        if(x.getBooked()==true)
+                                        {
+                                            JOptionPane.showMessageDialog(null, "Your flight has already been booked against your Passport: "+x.getPassport());
+                                        }
+                                        if (Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 6)) > 0 )
+                                        {
+                                            x.setBooked(true);
+                                            JOptionPane.showMessageDialog(null, "Your flight has been booked against your Passport: "+x.getPassport());
+                                        }
+                                        else
+                                        {
+                                            JOptionPane.showMessageDialog(null, "This flight has no available seats in Business class.");
+                                        }
+                                    }
+                                }
+
+                                break;
+                            }
+                            default:
+                            {
+                                JOptionPane.showMessageDialog(null, "You entered an invalid input. Try again");
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        System.out.println(visaStatus);
+                        JOptionPane.showMessageDialog(null, "Please enter '1' or '2' only.");
+                    }
+                }
+                else if(flightTable.getSelectedRowCount()==0)
+                {
+                    JOptionPane.showMessageDialog(null, "Please select a flight to book.");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Please select one flight at a time.");
+                }
+            }
+        });
 
 
 
