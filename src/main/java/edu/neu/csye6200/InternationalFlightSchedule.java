@@ -1,5 +1,7 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.InternationalFlight;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -50,18 +52,16 @@ public class InternationalFlightSchedule extends JFrame {
 	 * Create the frame.
 	 */
 	public InternationalFlightSchedule() {
-		setBackground(Color.PINK);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 443);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.PINK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		
 		
-		String[] columns = {"Flight ID", "Time", "Date", "Daparture Destination",
+		String[] columns = {"DomesticFlight ID", "Time", "Date", "Daparture Destination",
                 "Land Destination" , "Economy Seats" , "Business Seats" , "Time Duration"};
 
 		DefaultTableModel obj=new DefaultTableModel(columns,0);
@@ -138,7 +138,7 @@ public class InternationalFlightSchedule extends JFrame {
 		btnNewButton_2.setBounds(359, 250, 89, 23);
 		contentPane.add(btnNewButton_2);
 		
-		lblNewLabel = new JLabel("International Flight Schedule");
+		lblNewLabel = new JLabel("International DomesticFlight Schedule");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 680, 28);
