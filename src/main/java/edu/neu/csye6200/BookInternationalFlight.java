@@ -1,4 +1,5 @@
 package edu.neu.csye6200;
+import edu.neu.csye6200.utils.Passengers;
 import edu.neu.csye6200.utils.StringRes;
 
 import java.awt.EventQueue;
@@ -27,14 +28,12 @@ public class BookInternationalFlight extends JFrame {
      * Launch the application.
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    BookInternationalFlight frame = new BookInternationalFlight();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                BookInternationalFlight frame = new BookInternationalFlight();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -47,7 +46,7 @@ public class BookInternationalFlight extends JFrame {
         // Setting up the frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 872, 433);
-        setTitle("Book International Flight");
+        setTitle("Book International DomesticFlight");
         // Creating the content pane
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -55,13 +54,13 @@ public class BookInternationalFlight extends JFrame {
         contentPane.setLayout(null);
 
         // Adding GUI components such as labels, buttons, and table
-        JLabel lblNewLabel = new JLabel("International Flight Schedule");
+        JLabel lblNewLabel = new JLabel("International DomesticFlight Schedule");
         lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 15));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setBounds(10, 11, 764, 23);
         contentPane.add(lblNewLabel);
 
-        String[] columns = {"Flight ID", "Time", "Date", "Daparture",
+        String[] columns = {"DomesticFlight ID", "Time", "Date", "Daparture",
                 "Arrival" , "Economy class Seats" , "Business class Seats" , "Time Duration"};
 
         DefaultTableModel obj=new DefaultTableModel(columns,0);
@@ -81,7 +80,7 @@ public class BookInternationalFlight extends JFrame {
         scrollPane.setBounds(10, 39, 764, 200);
         contentPane.add(scrollPane);
         //Cancellation of a booked flight with a penalty.
-        JButton btnNewButton = new JButton("Cancel Flight");
+        JButton btnNewButton = new JButton("Cancel DomesticFlight");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
@@ -110,7 +109,7 @@ public class BookInternationalFlight extends JFrame {
         btnNewButton.setBounds(249, 250, 112, 23);
         contentPane.add(btnNewButton);
         //Booking of a flight based on user input.
-        JButton btnNewButton_1 = new JButton("Book Flight");
+        JButton btnNewButton_1 = new JButton("Book DomesticFlight");
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (flightTable.getSelectedRowCount()==1)
