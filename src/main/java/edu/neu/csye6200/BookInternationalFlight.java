@@ -76,5 +76,38 @@ public static void main(String[] args) {
             obj.addRow(update);
         }
 
+        flightTable = new JTable(obj);
+        JScrollPane scrollPane = new JScrollPane(flightTable);
+        scrollPane.setBounds(10, 39, 764, 200);
+        contentPane.add(scrollPane);
+        //Cancellation of a booked flight with a penalty.
+        JButton btnNewButton = new JButton("Cancel DomesticFlight");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                for (Passengers x: SignUP.PassengerList)
+                {
+                    if (x.getUsername().equals(SignUP.username.getText()))
+                    {
+                        if (x.getBooked()==true)
+                        {
+                            double hour=Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 7));
+
+                            double price=(hour*10000)+((hour*10000)*5/100);
+                            JOptionPane.showMessageDialog(null, "Your flight has been cancelled successfully with a penalty of "+ (price*25/100));
+                            SignUP.PassengerList.get(0).setBooked(false);
+                        }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "Please book your flight first.");
+                        }
+                    }
+                }
+
+
+            }
+        });
+
+
 
 
