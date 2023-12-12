@@ -123,10 +123,6 @@ public class SignUP extends JFrame {
             Passengers obj = new Passengers(fullName.getText(), phoneNumber.getText(), username.getText(), password.getText(), passport.getText());
             PassengerList.add(obj);
             CSVReader.addToCSV(StringRes.PASSENGERS, obj.toString());
-
-//            Login obj1 = new Login();
-//            obj1.setVisible(true);
-//            dispose();
         }
     }
 
