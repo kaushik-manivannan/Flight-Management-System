@@ -39,13 +39,13 @@ public class AddLocalFlight extends JFrame {
 	public AddLocalFlight() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 537, 359);
-		setTitle("Add Local DomesticFlight");
+		setTitle("Add Domestic Flight");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Add Local DomesticFlight");
+		JLabel lblNewLabel = new JLabel("Add Domestic Flight");
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 414, 14);

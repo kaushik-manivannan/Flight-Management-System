@@ -53,7 +53,7 @@ public class BookInternationalFlight extends JFrame {
         contentPane.setLayout(null);
 
         // Adding GUI components such as labels, buttons, and table
-        JLabel lblNewLabel = new JLabel("International DomesticFlight Schedule");
+        JLabel lblNewLabel = new JLabel("International Flight Schedule");
         lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 15));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setBounds(10, 11, 764, 23);

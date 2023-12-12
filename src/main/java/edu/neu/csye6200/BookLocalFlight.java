@@ -43,13 +43,13 @@ public class  BookLocalFlight extends JFrame {
     public BookLocalFlight() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 843, 419);
-        setTitle("Book Local DomesticFlight");
+        setTitle("Book Domestic Flight");
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Local DomesticFlight Schedule");
+        JLabel lblNewLabel = new JLabel("Domestic Flight Schedule");
         lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 15));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setBounds(28, 0, 679, 28);

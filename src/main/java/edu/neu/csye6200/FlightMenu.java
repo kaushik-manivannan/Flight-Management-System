@@ -29,7 +29,7 @@ public class FlightMenu extends JFrame {
 	public FlightMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 612, 406);
-		setTitle("Select DomesticFlight Type");
+		setTitle("Select Flight Type");
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -42,7 +42,7 @@ public class FlightMenu extends JFrame {
 
 		JPanel buttonPanel = new JPanel(new GridLayout(3, 1, 0, 50));
 
-		JButton localScheduleButton = createButton("Local Flights", e -> {
+		JButton localScheduleButton = createButton("Domestic Flights", e -> {
 			dispose();
 			new LocalFlightSchedule().setVisible(true);
 		});

@@ -40,7 +40,7 @@ public class BookingMenu extends JFrame {
 		welcomeLabel.setBounds(83, 11, 414, 31);
 		contentPane.add(welcomeLabel);
 
-		JButton localFlightsButton = new JButton("Local Flights");
+		JButton localFlightsButton = new JButton("Domestic Flights");
 		localFlightsButton.addActionListener(e -> {
 			dispose();
 			new BookLocalFlight().setVisible(true);
