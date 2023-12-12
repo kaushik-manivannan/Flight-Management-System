@@ -61,7 +61,7 @@ public class InternationalFlightSchedule extends JFrame {
 		
 		
 		
-		String[] columns = {"DomesticFlight ID", "Time", "Date", "Daparture Destination",
+		String[] columns = {"Flight ID", "Time", "Date", "Daparture Destination",
                 "Land Destination" , "Economy Seats" , "Business Seats" , "Time Duration"};
 
 		DefaultTableModel obj=new DefaultTableModel(columns,0);
@@ -84,74 +84,66 @@ public class InternationalFlightSchedule extends JFrame {
 	//	scrollPane.setColumnHeaderView(table);
 		
 		btnNewButton = new JButton("Add");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AddInternationalFlight obj=new AddInternationalFlight();
-				obj.setVisible(true);
-				dispose();
-			}
-		});
+		btnNewButton.addActionListener(e -> {
+            AddInternationalFlight obj13 =new AddInternationalFlight();
+            obj13.setVisible(true);
+            dispose();
+        });
 		btnNewButton.setBounds(161, 250, 89, 23);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("Delete");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (table.getSelectedRowCount()==1)
-				{
-					obj.removeRow(table.getSelectedRow());
-					internationalFlights.remove(table.getSelectedRowCount()+1);
-					JOptionPane.showMessageDialog(null, "Selected flight has been deleted.");
-				}
-				else if(table.getSelectedRowCount()==0)
-				{
-					JOptionPane.showMessageDialog(null, "Please select a row first.");
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(null, "Please select one row at a time.");
-				}
-			}
-		});
+		btnNewButton_1.addActionListener(e -> {
+            if (table.getSelectedRowCount()==1)
+            {
+                obj.removeRow(table.getSelectedRow());
+                internationalFlights.remove(table.getSelectedRowCount()+1);
+                JOptionPane.showMessageDialog(null, "Selected flight has been deleted.");
+            }
+            else if(table.getSelectedRowCount()==0)
+            {
+                JOptionPane.showMessageDialog(null, "Please select a row first.");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Please select one row at a time.");
+            }
+        });
 		btnNewButton_1.setBounds(260, 250, 89, 23);
 		contentPane.add(btnNewButton_1);
 		
 		btnNewButton_2 = new JButton("Edit");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (table.getSelectedRowCount()==1)
-				{
-					EditInternationalFlight obj=new EditInternationalFlight();
-					obj.setVisible(true);
-					dispose();
-				}
-				else if(table.getSelectedRowCount()==0)
-				{
-					JOptionPane.showMessageDialog(null, "Please select a row first");
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(null, "Please select one row at a time");
-				}
-			}
-		});
+		btnNewButton_2.addActionListener(e -> {
+            if (table.getSelectedRowCount()==1)
+            {
+                EditInternationalFlight obj1 =new EditInternationalFlight();
+                obj1.setVisible(true);
+                dispose();
+            }
+            else if(table.getSelectedRowCount()==0)
+            {
+                JOptionPane.showMessageDialog(null, "Please select a row first");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Please select one row at a time");
+            }
+        });
 		btnNewButton_2.setBounds(359, 250, 89, 23);
 		contentPane.add(btnNewButton_2);
 		
-		lblNewLabel = new JLabel("International DomesticFlight Schedule");
+		lblNewLabel = new JLabel("International Flight Schedule");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 680, 28);
 		contentPane.add(lblNewLabel);
 		
 		btnNewButton_3 = new JButton("Back");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FlightMenu obj=new FlightMenu();
-				obj.setVisible(true);
-				dispose();
-			}
-		});
+		btnNewButton_3.addActionListener(e -> {
+            FlightMenu obj12 =new FlightMenu();
+            obj12.setVisible(true);
+            dispose();
+        });
 		btnNewButton_3.setBounds(458, 250, 89, 23);
 		contentPane.add(btnNewButton_3);
 		

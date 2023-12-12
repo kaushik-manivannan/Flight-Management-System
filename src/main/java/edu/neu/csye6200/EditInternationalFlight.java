@@ -53,13 +53,13 @@ public class EditInternationalFlight extends JFrame {
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Edit DomesticFlight");
+        JLabel lblNewLabel = new JLabel("Edit International Flight");
         lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 14));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setBounds(10, 11, 414, 20);
         contentPane.add(lblNewLabel);
 
-        JLabel lblNewLabel_1 = new JLabel("DomesticFlight ID");
+        JLabel lblNewLabel_1 = new JLabel("Flight ID");
         lblNewLabel_1.setBounds(10, 36, 113, 14);
         contentPane.add(lblNewLabel_1);
 
@@ -67,7 +67,7 @@ public class EditInternationalFlight extends JFrame {
         lblNewLabel_2.setBounds(10, 61, 113, 14);
         contentPane.add(lblNewLabel_2);
 
-        JLabel lblNewLabel_3 = new JLabel("DomesticFlight Date");
+        JLabel lblNewLabel_3 = new JLabel("Flight Date");
         lblNewLabel_3.setBounds(10, 86, 113, 14);
         contentPane.add(lblNewLabel_3);
 

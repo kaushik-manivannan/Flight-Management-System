@@ -36,22 +36,22 @@ public class DomesticFlight implements Flight {
 
 	@Override
 	public String getTimeDuration() {
-		return null;
+		return timeDuration;
 	}
 
 	@Override
 	public void setTimeDuration(String timeDuration) {
-
+		this.timeDuration = timeDuration;
 	}
 
 	@Override
 	public String getDate() {
-		return null;
+		return date;
 	}
 
 	@Override
 	public void setDate(String date) {
-
+		this.date = date;
 	}
 
 	@Override

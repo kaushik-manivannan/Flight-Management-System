@@ -111,7 +111,7 @@ public class AddInternationalFlight extends JFrame {
     }
 
     private boolean validateInput() {
-        return validateNumericTextField(flightID, "DomesticFlight ID", 0, Integer.MAX_VALUE)
+        return validateTextField(flightID, "DomesticFlight ID")
                 && validateTextField(flightTime, "Time")
                 && validateTextField(landTime, "Date")
                 && validateCityTextField(departCity, "City of Departure")

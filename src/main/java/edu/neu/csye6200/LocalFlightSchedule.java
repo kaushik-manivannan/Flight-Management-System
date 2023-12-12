@@ -32,16 +32,14 @@ public class LocalFlightSchedule extends JFrame {
 	static List<DomesticFlight> domesticFlightList = new ArrayList<>();
 
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LocalFlightSchedule frame = new LocalFlightSchedule();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		EventQueue.invokeLater(() -> {
+            try {
+                LocalFlightSchedule frame = new LocalFlightSchedule();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 	}
 
 	public LocalFlightSchedule() {
@@ -65,7 +63,7 @@ public class LocalFlightSchedule extends JFrame {
 	}
 
 	private void initializeTable() {
-		String[] columns = {"DomesticFlight ID", "Time", "Date", "Departure Destination",
+		String[] columns = {"Flight ID", "Time", "Date", "Departure Destination",
 				"Land Destination", "Economy Seats", "Business Seats", "Time Duration"};
 
 		DefaultTableModel obj = new DefaultTableModel(columns, 0);
@@ -87,13 +85,11 @@ public class LocalFlightSchedule extends JFrame {
 
 	private void addButtons() {
 		btnAdd = new JButton("Add");
-		btnAdd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AddLocalFlight obj = new AddLocalFlight();
-				obj.setVisible(true);
-				dispose();
-			}
-		});
+		btnAdd.addActionListener(e -> {
+            AddLocalFlight obj = new AddLocalFlight();
+            obj.setVisible(true);
+            dispose();
+        });
 		btnAdd.setBounds(161, 250, 89, 23);
 		contentPane.add(btnAdd);
 
@@ -105,29 +101,23 @@ public class LocalFlightSchedule extends JFrame {
 		contentPane.add(btnDelete);
 
 		btnEdit = new JButton("Edit");
-		btnEdit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				handleEditAction();
-			}
-		});
+		btnEdit.addActionListener(e -> handleEditAction());
 		btnEdit.setBounds(359, 250, 89, 23);
 		contentPane.add(btnEdit);
 
 		btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				FlightMenu obj = new FlightMenu();
-				obj.setVisible(true);
-				dispose();
-			}
-		});
+		btnBack.addActionListener(e -> {
+            FlightMenu obj = new FlightMenu();
+            obj.setVisible(true);
+            dispose();
+        });
 		btnBack.setBounds(458, 250, 89, 23);
 		contentPane.add(btnBack);
 	}
 
 
 	private void addLabels() {
-		lblLocalFlightSchedule = new JLabel("Local DomesticFlight Schedule");
+		lblLocalFlightSchedule = new JLabel("Domestic Flight Schedule");
 		lblLocalFlightSchedule.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblLocalFlightSchedule.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLocalFlightSchedule.setBounds(10, 11, 680, 17);
