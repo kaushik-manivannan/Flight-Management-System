@@ -71,7 +71,7 @@ public class LocalFlightSchedule extends JFrame {
 		DefaultTableModel obj = new DefaultTableModel(columns, 0);
 
 		for (DomesticFlight domesticFlight : LocalFlightSchedule.domesticFlightList) {
-			Object[] update = {domesticFlight.getFlightID(), domesticFlight.getDepartTime(), domesticFlight.getLandTime(),
+			Object[] update = {domesticFlight.getFlightID(), domesticFlight.getTimeDuration(), domesticFlight.getDate(),
 					domesticFlight.getDepartDestination(), domesticFlight.getLandDestination(),
 					domesticFlight.getEconomySeats(), domesticFlight.getBusinessSeats(), domesticFlight.getDistance()};
 

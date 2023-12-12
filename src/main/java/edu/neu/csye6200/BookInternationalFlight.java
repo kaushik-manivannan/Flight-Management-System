@@ -1,8 +1,5 @@
 package edu.neu.csye6200;
-import edu.neu.csye6200.utils.CSVReader;
-import edu.neu.csye6200.utils.InternationalFlight;
-import edu.neu.csye6200.utils.Passengers;
-import edu.neu.csye6200.utils.StringRes;
+import edu.neu.csye6200.utils.*;
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -67,12 +64,12 @@ public class BookInternationalFlight extends JFrame {
 
         DefaultTableModel obj=new DefaultTableModel(columns,0);
 
-        for (int i = 0; i< InternationalFlightSchedule.flightList2.size() ; i++)
+        for (int i = 0; i< InternationalFlightSchedule.internationalFlights.size() ; i++)
         {
 
-            Object[] update= {InternationalFlightSchedule.flightList2.get(i).getFlightID() , InternationalFlightSchedule.flightList2.get(i).getDepartTime() , InternationalFlightSchedule.flightList2.get(i).getLandTime()
-                    , InternationalFlightSchedule.flightList2.get(i).getDepartDestination() , InternationalFlightSchedule.flightList2.get(i).getLandDestination() ,
-                    InternationalFlightSchedule.flightList2.get(i).getEconomySeats() , InternationalFlightSchedule.flightList2.get(i).getBusinessSeats() , InternationalFlightSchedule.flightList2.get(i).getDistance()};
+            Object[] update= {InternationalFlightSchedule.internationalFlights.get(i).getFlightID() , InternationalFlightSchedule.internationalFlights.get(i).getTimeDuration() , InternationalFlightSchedule.internationalFlights.get(i).getDate()
+                    , InternationalFlightSchedule.internationalFlights.get(i).getDepartDestination() , InternationalFlightSchedule.internationalFlights.get(i).getLandDestination() ,
+                    InternationalFlightSchedule.internationalFlights.get(i).getEconomySeats() , InternationalFlightSchedule.internationalFlights.get(i).getBusinessSeats() , InternationalFlightSchedule.internationalFlights.get(i).getDistance()};
 
             obj.addRow(update);
         }
@@ -82,7 +79,7 @@ public class BookInternationalFlight extends JFrame {
         scrollPane.setBounds(10, 39, 764, 200);
         contentPane.add(scrollPane);
         //Cancellation of a booked flight with a penalty.
-        JButton btnNewButton = new JButton("Cancel DomesticFlight");
+        JButton btnNewButton = new JButton("Cancel");
         btnNewButton.addActionListener(e -> {
 
             for (Passengers x: SignUP.PassengerList)
@@ -113,10 +110,6 @@ public class BookInternationalFlight extends JFrame {
         btnNewButton_1.addActionListener(e -> {
             if (flightTable.getSelectedRowCount()==1)
             {
-                String visachoice= JOptionPane.showInputDialog(null,"Enter Y if you have Visa and N if you don't have Visa",null);
-                if(visachoice.equals("N")) {
-                    JOptionPane.showMessageDialog(null,"Sorry you can't book a flight");
-                }
                 String userchoice= JOptionPane.showInputDialog(null,"Enter 1 for Economy class and 2 for Business Class",null);
 
                 int selectClass = Integer.valueOf(userchoice);
@@ -125,13 +118,27 @@ public class BookInternationalFlight extends JFrame {
                 {
                     case 1:
                     {
-                        if (Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 5)) > 0 )
+                        int economySeats =
+                                Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 5));
+                        if (economySeats > 0 )
                         {
+                            String flightId =
+                                    (String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 0);
                             String str = Passengers.currentUser + "," +
-                                    flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 0) + "," +
-                                    "Booked";
+                                     flightId + "," + "Booked";
                             CSVReader.addToCSV(StringRes.BOOKING, str);
                             JOptionPane.showMessageDialog(null, "Your flight has been booked");
+                            Thread t1 = new Thread(() -> {
+                                for (InternationalFlight internationalFlight:InternationalFlightSchedule.internationalFlights) {
+                                    if (internationalFlight.getFlightID().equals(flightId)) {
+                                        internationalFlight.setEconomySeats(Integer.toString(economySeats-1));
+                                    }
+                                }
+                                CSVReader.clearFile(StringRes.INTERNATIONAL);
+                                CSVReader.writeInternationalFlightsToFile(StringRes.INTERNATIONAL,
+                                        InternationalFlightSchedule.internationalFlights);
+                            });
+                            t1.start();
                         }
                         else
                         {
@@ -141,13 +148,28 @@ public class BookInternationalFlight extends JFrame {
                     }
                     case 2:
                     {
-                        if (Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 6)) > 0 )
+                        int businessSeats =
+                                Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 6));
+                        if (businessSeats > 0 )
                         {
+                            String flightId =
+                                    (String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 0);
                             String str = Passengers.currentUser + "," +
-                                    flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 0) + "," +
+                                     flightId + "," +
                                     "Booked";
                             CSVReader.addToCSV(StringRes.BOOKING, str);
                             JOptionPane.showMessageDialog(null, "Your flight has been booked");
+                            Thread t1 = new Thread(() -> {
+                                for (InternationalFlight internationalFlight:InternationalFlightSchedule.internationalFlights) {
+                                    if (internationalFlight.getFlightID().equals(flightId)) {
+                                        internationalFlight.setEconomySeats(Integer.toString(businessSeats-1));
+                                    }
+                                }
+                                CSVReader.clearFile(StringRes.INTERNATIONAL);
+                                CSVReader.writeInternationalFlightsToFile(StringRes.INTERNATIONAL,
+                                        InternationalFlightSchedule.internationalFlights);
+                            });
+                            t1.start();
                         }
                         else
                         {

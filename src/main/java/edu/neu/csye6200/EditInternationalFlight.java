@@ -164,9 +164,9 @@ public class EditInternationalFlight extends JFrame {
 
                     InternationalFlight internationalFlight=new InternationalFlight(idField.getText() , timeField.getText() , dateField.getText() , departCityField.getText() , landCityField.getText() , economySeatsField.getText()
                             , businessSeatsField.getText() , travelDistanceField.getText());
-                    InternationalFlightSchedule.flightList2.set((InternationalFlightSchedule.table.getSelectedRow()), internationalFlight);
+                    InternationalFlightSchedule.internationalFlights.set((InternationalFlightSchedule.table.getSelectedRow()), internationalFlight);
                     CSVReader.clearFile(StringRes.INTERNATIONAL);
-                    CSVReader.writeInternationalFlightsToFile(StringRes.INTERNATIONAL, InternationalFlightSchedule.flightList2);
+                    CSVReader.writeInternationalFlightsToFile(StringRes.INTERNATIONAL, InternationalFlightSchedule.internationalFlights);
                     JOptionPane.showMessageDialog(null, "Updated Successfully");
                     InternationalFlightSchedule obj=new InternationalFlightSchedule();
                     obj.setVisible(true);

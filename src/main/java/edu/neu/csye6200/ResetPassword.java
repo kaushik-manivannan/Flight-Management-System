@@ -150,7 +150,10 @@ public class ResetPassword extends JFrame {
 
         // Button to go back
         JButton btnNewButton_2 = new JButton(StringRes.BACK.getValue());
-        btnNewButton_2.addActionListener(e -> dispose());
+        btnNewButton_2.addActionListener(e -> {
+            dispose();
+            new BookingMenu().setVisible(true);
+        });
         btnNewButton_2.setBounds(479, 298, 89, 23);
         contentPane.add(btnNewButton_2);
     }

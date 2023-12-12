@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.swing.JButton;
 
 public class Driver extends JFrame {
@@ -86,7 +85,7 @@ public class Driver extends JFrame {
 		internationalFlightCSVList
 				.stream()
 				.map(abstractFlightFactory::createFlight)
-				.forEach(flight -> InternationalFlightSchedule.flightList2.add((InternationalFlight) flight));
+				.forEach(flight -> InternationalFlightSchedule.internationalFlights.add((InternationalFlight) flight));
 
 		AbstractFlightFactory abstractFlightFactory1 = DomesticFlightFactory.INSTANCE;
 		domesticFlighCSVList

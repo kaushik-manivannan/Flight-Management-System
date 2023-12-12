@@ -1,5 +1,6 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.Flight;
 import edu.neu.csye6200.utils.InternationalFlight;
 
 import java.awt.EventQueue;
@@ -18,7 +19,6 @@ import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import java.awt.Color;
 import java.util.List;
 
 public class InternationalFlightSchedule extends JFrame {
@@ -30,7 +30,7 @@ public class InternationalFlightSchedule extends JFrame {
 	private JButton btnNewButton_2;
 	private JLabel lblNewLabel;
 	private JButton btnNewButton_3;
-	static List<InternationalFlight> flightList2=new ArrayList<>();
+	static List<InternationalFlight> internationalFlights =new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -67,12 +67,12 @@ public class InternationalFlightSchedule extends JFrame {
 		DefaultTableModel obj=new DefaultTableModel(columns,0);
 
         
-	    for (int i=0 ; i<InternationalFlightSchedule.flightList2.size() ; i++)
+	    for (int i = 0; i<InternationalFlightSchedule.internationalFlights.size() ; i++)
 	    {
 	    	
-	        Object[] update= {InternationalFlightSchedule.flightList2.get(i).getFlightID() , InternationalFlightSchedule.flightList2.get(i).getDepartTime() , InternationalFlightSchedule.flightList2.get(i).getLandTime()
-	        			, InternationalFlightSchedule.flightList2.get(i).getDepartDestination() , InternationalFlightSchedule.flightList2.get(i).getLandDestination() , 
-	        			InternationalFlightSchedule.flightList2.get(i).getEconomySeats() , InternationalFlightSchedule.flightList2.get(i).getBusinessSeats() , InternationalFlightSchedule.flightList2.get(i).getDistance()};
+	        Object[] update= {InternationalFlightSchedule.internationalFlights.get(i).getFlightID() , InternationalFlightSchedule.internationalFlights.get(i).getDepartTime() , InternationalFlightSchedule.internationalFlights.get(i).getLandTime()
+	        			, InternationalFlightSchedule.internationalFlights.get(i).getDepartDestination() , InternationalFlightSchedule.internationalFlights.get(i).getLandDestination() ,
+	        			InternationalFlightSchedule.internationalFlights.get(i).getEconomySeats() , InternationalFlightSchedule.internationalFlights.get(i).getBusinessSeats() , InternationalFlightSchedule.internationalFlights.get(i).getDistance()};
 	        
 	    	obj.addRow(update);
 	    }
@@ -100,7 +100,7 @@ public class InternationalFlightSchedule extends JFrame {
 				if (table.getSelectedRowCount()==1)
 				{
 					obj.removeRow(table.getSelectedRow());
-					flightList2.remove(table.getSelectedRowCount()+1);
+					internationalFlights.remove(table.getSelectedRowCount()+1);
 					JOptionPane.showMessageDialog(null, "Selected flight has been deleted.");
 				}
 				else if(table.getSelectedRowCount()==0)

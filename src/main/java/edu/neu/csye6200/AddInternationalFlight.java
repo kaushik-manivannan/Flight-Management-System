@@ -132,7 +132,7 @@ public class AddInternationalFlight extends JFrame {
                 businessSeats.getText(),
                 distance.getText()
         );
-        InternationalFlightSchedule.flightList2.add(obj);
+        InternationalFlightSchedule.internationalFlights.add(obj);
     }
 
     private JTextField createTextField(int x, int y, int width, int height) {

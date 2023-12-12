@@ -28,7 +28,7 @@ public class CSVReader {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
             // Append data to the file
-            writer.write("\n" + data);
+            writer.write(data + "\n");
             writer.flush();
             writer.close();
         } catch (IOException e) {

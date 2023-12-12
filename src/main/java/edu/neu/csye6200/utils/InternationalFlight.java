@@ -75,7 +75,7 @@ public class InternationalFlight implements Flight{
 		this.departDestination=departDestination;
 	}
 	
-	void setLandDestination(String landDestination)
+	public void setLandDestination(String landDestination)
 	{
 		this.landDestination=landDestination;
 	}

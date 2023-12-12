@@ -2,13 +2,12 @@ package edu.neu.csye6200.utils;
 
 public class DomesticFlight implements Flight {
     
-    private String flightID,timeInterval,date,departDestination,landDestination,economySeats,businessSeats,distance;
-	boolean isBooked;
+    private String flightID, timeDuration, date,departDestination,landDestination,economySeats,businessSeats,distance;
 	
-	public DomesticFlight(String flightID, String timeInterval, String date, String departDestination, String landDestination, String economySeats, String businessSeats, String distance)
+	public DomesticFlight(String flightID, String timeDuration, String date, String departDestination, String landDestination, String economySeats, String businessSeats, String distance)
 	{
 		this.flightID=flightID;
-		this.timeInterval=timeInterval;
+		this.timeDuration = timeDuration;
 		this.date=date;
 		this.departDestination=departDestination;
 		this.landDestination=landDestination;
@@ -20,7 +19,7 @@ public class DomesticFlight implements Flight {
 	public DomesticFlight(String csvString) {
 		String[] fields = csvString.split(",");
 		this.flightID=fields[0];
-		this.timeInterval=fields[1];
+		this.timeDuration =fields[1];
 		this.date=fields[2];
 		this.departDestination=fields[3];
 		this.landDestination=fields[4];
@@ -34,96 +33,98 @@ public class DomesticFlight implements Flight {
 	{
 		this.flightID=flightID;
 	}
-	
+
+	@Override
+	public String getTimeDuration() {
+		return null;
+	}
+
+	@Override
+	public void setTimeDuration(String timeDuration) {
+
+	}
+
+	@Override
+	public String getDate() {
+		return null;
+	}
+
+	@Override
+	public void setDate(String date) {
+
+	}
+
 	@Override
 	public String getFlightID()
 	{
 		return flightID;
 	}
-	
-	public void setDepartTime(String timeInterval)
-	{
-		this.timeInterval=timeInterval;
-	}
-	
-	public void setLandTime(String date)
-	{
-		this.date=date;
-	}
-	
+
+	@Override
 	public void setDepartDestination(String departDestination)
 	{
 		this.departDestination=departDestination;
 	}
-	
+
+	@Override
 	public void setLandDestination(String landDestination)
 	{
 		this.landDestination=landDestination;
 	}
-	
+
+	@Override
 	public void setEconomySeats(String economySeats)
 	{
 		this.economySeats=economySeats;
 	}
-	
+
+	@Override
 	public void setBusinessSeats(String businessSeats)
 	{
 		this.businessSeats=businessSeats;
 	}
-	
-	public String getDepartTime()
-	{
-		return timeInterval;
-	}
-	
-	public String getLandTime()
-	{
-		return date;
-	}
-	
+
+	@Override
 	public String getDepartDestination()
 	{
 		return departDestination;
 	}
-	
+
+	@Override
 	public String getLandDestination()
 	{
 		return landDestination;
 	}
-	
+
+	@Override
 	public String getEconomySeats()
 	{
 		return economySeats;
 	}
-	
+
+	@Override
 	public String getBusinessSeats()
 	{
 		return businessSeats;
 	}
-	
+
+	@Override
 	public void setDistance(String distance)
 	{
 		this.distance=distance;
 	}
-	
+
+	@Override
 	public String getDistance()
 	{
 		return distance;
 	}
-	
-	public void setBooked(boolean isBooked)
-	{
-		this.isBooked=isBooked;
-	}
-	
-	public boolean getBooked()
-	{
-		return isBooked;
-	}
 
 	@Override
 	public String toString() {
-		return flightID +  "," + timeInterval +  "," + date + "," + departDestination + "," + landDestination + "," + economySeats + "," + businessSeats + "," + distance + "," + isBooked;
+		return flightID +  "," + timeDuration +  "," +
+				date + "," + departDestination + "," + landDestination + "," +
+				economySeats + "," + businessSeats + "," + distance;
 	}
     
 }

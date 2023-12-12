@@ -1,7 +1,5 @@
 package edu.neu.csye6200;
-import edu.neu.csye6200.utils.CSVReader;
-import edu.neu.csye6200.utils.Passengers;
-import edu.neu.csye6200.utils.StringRes;
+import edu.neu.csye6200.utils.*;
 
 import java.awt.EventQueue;
 
@@ -65,7 +63,7 @@ public class  BookLocalFlight extends JFrame {
         for (int i = 0; i< LocalFlightSchedule.domesticFlightList.size() ; i++)
         {
 
-            Object[] update= {LocalFlightSchedule.domesticFlightList.get(i).getFlightID() , LocalFlightSchedule.domesticFlightList.get(i).getDepartTime() , LocalFlightSchedule.domesticFlightList.get(i).getLandTime()
+            Object[] update= {LocalFlightSchedule.domesticFlightList.get(i).getFlightID() , LocalFlightSchedule.domesticFlightList.get(i).getTimeDuration() , LocalFlightSchedule.domesticFlightList.get(i).getDate()
                     , LocalFlightSchedule.domesticFlightList.get(i).getDepartDestination() , LocalFlightSchedule.domesticFlightList.get(i).getLandDestination() ,
                     LocalFlightSchedule.domesticFlightList.get(i).getEconomySeats() , LocalFlightSchedule.domesticFlightList.get(i).getBusinessSeats() , LocalFlightSchedule.domesticFlightList.get(i).getDistance()};
 
@@ -77,7 +75,7 @@ public class  BookLocalFlight extends JFrame {
         scrollPane.setBounds(10, 39, 764, 200);
         contentPane.add(scrollPane);
 
-        JButton btnNewButton = new JButton("Cancel DomesticFlight");
+        JButton btnNewButton = new JButton("Cancel");
         btnNewButton.addActionListener(e -> {
 
             for (Passengers x: SignUP.PassengerList)
@@ -102,7 +100,7 @@ public class  BookLocalFlight extends JFrame {
         btnNewButton.setBounds(249, 250, 112, 23);
         contentPane.add(btnNewButton);
 
-        JButton btnNewButton_1 = new JButton("Book DomesticFlight");
+        JButton btnNewButton_1 = new JButton("Book Flight");
         btnNewButton_1.addActionListener(e -> {
             if (flightTable.getSelectedRowCount()==1)
             {
@@ -113,13 +111,27 @@ public class  BookLocalFlight extends JFrame {
                 {
                     case 1:
                     {
-                        if (Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 5)) > 0 )
+                        int economySeats =
+                                Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 5));
+                        if (economySeats > 0 )
                         {
+                            String flightId = (String)flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 0);
                             String str = Passengers.currentUser + "," +
-                                    flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 0) + "," +
+                                    flightId + "," +
                                     "Booked";
                             CSVReader.addToCSV(StringRes.BOOKING, str);
                             JOptionPane.showMessageDialog(null, "Your flight has been booked");
+                            Thread t1 = new Thread(() -> {
+                                for (DomesticFlight domesticFlight:LocalFlightSchedule.domesticFlightList) {
+                                    if (domesticFlight.getFlightID().equals(flightId)) {
+                                        domesticFlight.setEconomySeats(Integer.toString(economySeats-1));
+                                    }
+                                }
+                                CSVReader.clearFile(StringRes.DOMESTIC);
+                                CSVReader.writeDomesticFlightsToFile(StringRes.DOMESTIC,
+                                        LocalFlightSchedule.domesticFlightList);
+                            });
+                            t1.start();
                         }
                         else
                         {
@@ -129,13 +141,27 @@ public class  BookLocalFlight extends JFrame {
                     }
                     case 2:
                     {
-                        if (Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 6)) > 0 )
+                        int businessSeats =
+                                Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 6));
+                        if (businessSeats > 0 )
                         {
+                            String flightId =
+                                    (String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 0);
                             String str = Passengers.currentUser + "," +
-                                    flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 0) + "," +
-                                    "Booked";
+                                     flightId + "," + "Booked";
                             CSVReader.addToCSV(StringRes.BOOKING, str);
                             JOptionPane.showMessageDialog(null, "Your flight has been booked");
+                            Thread t1 = new Thread(() -> {
+                                for (DomesticFlight domesticFlight:LocalFlightSchedule.domesticFlightList) {
+                                    if (domesticFlight.getFlightID().equals(flightId)) {
+                                        domesticFlight.setEconomySeats(Integer.toString(businessSeats-1));
+                                    }
+                                }
+                                CSVReader.clearFile(StringRes.DOMESTIC);
+                                CSVReader.writeDomesticFlightsToFile(StringRes.DOMESTIC,
+                                        LocalFlightSchedule.domesticFlightList);
+                            });
+                            t1.start();
                         }
                         else
                         {
