@@ -92,5 +92,72 @@ public InternationalFlightSchedule() {
 			dispose();
 		}
 	});
+	btnNewButton.setBounds(161, 250, 89, 23);
+	contentPane.add(btnNewButton);
 
-	
+	btnNewButton_1 = new JButton("Delete");
+	btnNewButton_1.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			if (table.getSelectedRowCount()==1)
+			{
+				obj.removeRow(table.getSelectedRow());
+				flightList2.remove(table.getSelectedRowCount()+1);
+				JOptionPane.showMessageDialog(null, "Selected flight has been deleted.");
+			}
+			else if(table.getSelectedRowCount()==0)
+			{
+				JOptionPane.showMessageDialog(null, "Please select a row first.");
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Please select one row at a time.");
+			}
+		}
+	});
+	btnNewButton_1.setBounds(260, 250, 89, 23);
+	contentPane.add(btnNewButton_1);
+
+	btnNewButton_2 = new JButton("Edit");
+	btnNewButton_2.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			if (table.getSelectedRowCount()==1)
+			{
+				EditInternationalFlight obj=new EditInternationalFlight();
+				obj.setVisible(true);
+				dispose();
+			}
+			else if(table.getSelectedRowCount()==0)
+			{
+				JOptionPane.showMessageDialog(null, "Please select a row first");
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Please select one row at a time");
+			}
+		}
+	});
+	btnNewButton_2.setBounds(359, 250, 89, 23);
+	contentPane.add(btnNewButton_2);
+
+	lblNewLabel = new JLabel("International DomesticFlight Schedule");
+	lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+	lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+	lblNewLabel.setBounds(10, 11, 680, 28);
+	contentPane.add(lblNewLabel);
+
+	btnNewButton_3 = new JButton("Back");
+	btnNewButton_3.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			FlightMenu obj=new FlightMenu();
+			obj.setVisible(true);
+			dispose();
+		}
+	});
+	btnNewButton_3.setBounds(458, 250, 89, 23);
+	contentPane.add(btnNewButton_3);
+
+}
+
+}
+
+
