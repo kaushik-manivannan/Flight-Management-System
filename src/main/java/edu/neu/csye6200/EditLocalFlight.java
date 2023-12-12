@@ -1,5 +1,7 @@
 package edu.neu.csye6200;
+import edu.neu.csye6200.utils.CSVReader;
 import edu.neu.csye6200.utils.DomesticFlight;
+import edu.neu.csye6200.utils.StringRes;
 
 import java.awt.EventQueue;
 
@@ -165,6 +167,8 @@ public class EditLocalFlight extends JFrame {
                     DomesticFlight domesticFlight =new DomesticFlight(idField.getText() , timeField.getText() , dateField.getText() , departCityField.getText() , landCityField.getText() , economySeatsField.getText()
                             , businessSeatsField.getText() , distanceField.getText());
                     LocalFlightSchedule.domesticFlightList.set((row), domesticFlight);
+                    CSVReader.clearFile(StringRes.DOMESTIC);
+                    CSVReader.writeDomesticFlightsToFile(StringRes.DOMESTIC, LocalFlightSchedule.domesticFlightList);
                     JOptionPane.showMessageDialog(null, "Updated Successfully");
 
                     LocalFlightSchedule obj=new LocalFlightSchedule();

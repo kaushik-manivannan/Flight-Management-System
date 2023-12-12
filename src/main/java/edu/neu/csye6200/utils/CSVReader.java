@@ -86,6 +86,39 @@ public class CSVReader {
         return csvList;
     }
 
+    public static void clearFile(StringRes file) {
+        String filePath = getFilePath(file);
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath, false))) {
+            bufferedWriter.write("");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void writeInternationalFlightsToFile(StringRes file, List<InternationalFlight> flightList2) {
+        String filePath = getFilePath(file);
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath, true))) {
+            for(InternationalFlight flight : flightList2) {
+                bufferedWriter.write(flight.toString());
+                bufferedWriter.newLine();
+            }
+        } catch(IOException e) {
+            e.printStackTrace();;
+        }
+    }
+
+    public static void writeDomesticFlightsToFile(StringRes file, List<DomesticFlight> flightList) {
+        String filePath = getFilePath(file);
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath, true))) {
+            for(DomesticFlight flight : flightList) {
+                bufferedWriter.write(flight.toString());
+                bufferedWriter.newLine();
+            }
+        } catch(IOException e) {
+            e.printStackTrace();;
+        }
+    }
+
     private static String getFilePath(StringRes file) {
         String filePath;
         if (file == StringRes.PASSENGERS) {

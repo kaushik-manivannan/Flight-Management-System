@@ -120,5 +120,10 @@ public class DomesticFlight implements Flight {
 	{
 		return isBooked;
 	}
+
+	@Override
+	public String toString() {
+		return flightID +  "," + timeInterval +  "," + date + "," + departDestination + "," + landDestination + "," + economySeats + "," + businessSeats + "," + distance + "," + isBooked;
+	}
     
 }

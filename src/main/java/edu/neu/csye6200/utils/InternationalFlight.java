@@ -139,4 +139,9 @@ public class InternationalFlight implements Flight{
 	{
 		return isBooked;
 	}
+
+	@Override
+	public String toString() {
+		return flightID +  "," + timeDuration +  "," + date + "," + departDestination + "," + landDestination + "," + economySeats + "," + businessSeats + "," + distance + "," + isBooked;
+	}
 }
