@@ -43,6 +43,47 @@ public class LocalFlightSchedule extends JFrame {
             }
         });
     }
+    public LocalFlightSchedule() {
+        setMainFrameProperties();
+        createContentPane();
+        initializeTable();
+        addButtons();
+        addLabels();
+    }
+
+    private void setMainFrameProperties() {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 938, 423);
+    }
+
+    private void createContentPane() {
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+    }
+
+    private void initializeTable() {
+        String[] columns = {"DomesticFlight ID", "Time", "Date", "Departure Destination",
+                "Land Destination", "Economy Seats", "Business Seats", "Time Duration"};
+
+        DefaultTableModel obj = new DefaultTableModel(columns, 0);
+
+        for (DomesticFlight domesticFlight : LocalFlightSchedule.domesticFlightList) {
+            Object[] update = {domesticFlight.getFlightID(), domesticFlight.getDepartTime(), domesticFlight.getLandTime(),
+                    domesticFlight.getDepartDestination(), domesticFlight.getLandDestination(),
+                    domesticFlight.getEconomySeats(), domesticFlight.getBusinessSeats(), domesticFlight.getDistance()};
+
+            obj.addRow(update);
+        }
+
+
+        table = new JTable(obj);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(10, 39, 764, 200);
+        contentPane.add(scrollPane);
+    }
+
 
 
 
