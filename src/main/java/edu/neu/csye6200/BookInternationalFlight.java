@@ -28,3 +28,30 @@ public class BookInternationalFlight extends JFrame {
  * Launch the application.
  */
 
+public static void main(String[] args) {
+    EventQueue.invokeLater(() -> {
+        try {
+            BookInternationalFlight frame = new BookInternationalFlight();
+            frame.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    });
+}
+
+    /**
+     * Constructor for the BookInternationalFlight class.
+     * Initializes the GUI components and sets up the flight schedule table.
+     */
+    public BookInternationalFlight() {
+        // Setting up the frame
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 872, 433);
+        setTitle("Book International DomesticFlight");
+        // Creating the content pane
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+
+
