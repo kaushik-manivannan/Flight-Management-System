@@ -1,5 +1,7 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.InternationalFlight;
+
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -37,18 +39,19 @@ public class AddInternationalFlight extends JFrame {
     public AddInternationalFlight() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 562, 413);
+        setTitle("Add International Flight");
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(null);
 
-        JLabel lblNewLabel = new JLabel("Add International Flight");
+        JLabel lblNewLabel = new JLabel("Add International DomesticFlight");
         lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 15));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setBounds(10, 11, 414, 14);
         contentPane.add(lblNewLabel);
 
-        JLabel lblNewLabel_1 = new JLabel("Flight ID");
+        JLabel lblNewLabel_1 = new JLabel("DomesticFlight ID");
         lblNewLabel_1.setBounds(20, 36, 101, 14);
         contentPane.add(lblNewLabel_1);
 
@@ -108,7 +111,7 @@ public class AddInternationalFlight extends JFrame {
     }
 
     private boolean validateInput() {
-        return validateNumericTextField(flightID, "Flight ID", 0, Integer.MAX_VALUE)
+        return validateNumericTextField(flightID, "DomesticFlight ID", 0, Integer.MAX_VALUE)
                 && validateTextField(flightTime, "Time")
                 && validateTextField(landTime, "Date")
                 && validateCityTextField(departCity, "City of Departure")
@@ -119,7 +122,7 @@ public class AddInternationalFlight extends JFrame {
     }
 
     private void addInternationalFlight() {
-        internationalFlight obj = new internationalFlight(
+        InternationalFlight obj = new InternationalFlight(
                 flightID.getText(),
                 flightTime.getText(),
                 landTime.getText(),
@@ -129,7 +132,7 @@ public class AddInternationalFlight extends JFrame {
                 businessSeats.getText(),
                 distance.getText()
         );
-        InternationalFlightSchedule.flightList2.add(obj);
+        InternationalFlightSchedule.internationalFlights.add(obj);
     }
 
     private JTextField createTextField(int x, int y, int width, int height) {

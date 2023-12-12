@@ -1,5 +1,7 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.DomesticFlight;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -37,18 +39,19 @@ public class AddLocalFlight extends JFrame {
 	public AddLocalFlight() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 537, 359);
+		setTitle("Add Local DomesticFlight");
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Add Local Flight");
+		JLabel lblNewLabel = new JLabel("Add Local DomesticFlight");
 		lblNewLabel.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 414, 14);
 		contentPane.add(lblNewLabel);
 
-		JLabel lblNewLabel_1 = new JLabel("Flight ID");
+		JLabel lblNewLabel_1 = new JLabel("DomesticFlight ID");
 		lblNewLabel_1.setBounds(20, 36, 101, 14);
 		contentPane.add(lblNewLabel_1);
 
@@ -108,7 +111,7 @@ public class AddLocalFlight extends JFrame {
 	}
 
 	private boolean validateInput() {
-		return validateNumericTextField(flightID, "Flight ID", 0, Integer.MAX_VALUE)
+		return validateNumericTextField(flightID, "DomesticFlight ID", 0, Integer.MAX_VALUE)
 				&& validateTextField(flightTime, "Time")
 				&& validateTextField(landTime, "Date")
 				&& validateCityTextField(departCity, "City of Departure")
@@ -119,7 +122,7 @@ public class AddLocalFlight extends JFrame {
 	}
 
 	private void addLocalFlight() {
-		Flight obj = new Flight(
+		DomesticFlight obj = new DomesticFlight(
 				flightID.getText(),
 				flightTime.getText(),
 				landTime.getText(),
@@ -129,7 +132,7 @@ public class AddLocalFlight extends JFrame {
 				businessSeats.getText(),
 				distance.getText()
 		);
-		LocalFlightSchedule.flightList.add(obj);
+		LocalFlightSchedule.domesticFlightList.add(obj);
 	}
 
 	private JTextField createTextField(int x, int y, int width, int height) {

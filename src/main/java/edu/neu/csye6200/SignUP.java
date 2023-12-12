@@ -1,5 +1,7 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.CSVReader;
+import edu.neu.csye6200.utils.Passengers;
 import edu.neu.csye6200.utils.StringRes;
 
 import javax.swing.*;
@@ -7,15 +9,16 @@ import javax.swing.border.EmptyBorder;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SignUP extends JFrame {
 
     private JPanel contentPane;
     private JTextField fullName;
-    private JTextField cnic;
+    private JTextField phoneNumber;
     private JPasswordField password;
     private JPasswordField confirmPassword;
-    static ArrayList<Passengers> PassengerList = new ArrayList<Passengers>();
+    static List<Passengers> PassengerList = new ArrayList<>();
     static JTextField username;
     private JTextField passport;
 
@@ -40,31 +43,19 @@ public class SignUP extends JFrame {
         contentPane.setLayout(null);
 
         JLabel lblNewLabel = new JLabel(StringRes.TITLE.getValue());
-        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+        lblNewLabel.setFont(new Font("Calibri", Font.ITALIC, 18));
         lblNewLabel.setBounds(152, 11, 389, 29);
         contentPane.add(lblNewLabel);
 
         // Labels for user details
-        String[] labels = {"Full Name", "CNIC", "Password", "Confirm Password", "Username", "Passport"};
-        int yPos = 68;
+        String[] labels = {"Full Name", "Phone Number", "Passport","Username", "Password", "Confirm Password"};
+        int yPos = 65;
         for (String label : labels) {
             JLabel lbl = new JLabel(label);
             lbl.setFont(new Font("Tahoma", Font.PLAIN, 14));
-            lbl.setBounds(37, yPos, 110, 14);
+            lbl.setBounds(37, yPos, 150, 20);
             contentPane.add(lbl);
-            yPos += 33;
-        }
-
-        // Text fields for user details
-        yPos = 65;
-        String[] textFieldValues = {null, null, null, null, null, null};
-        for (int i = 0; i < labels.length; i++) {
-            JTextField textField = new JTextField();
-            textField.setBounds(214, yPos, 150, 20);
-            contentPane.add(textField);
-            textField.setColumns(10);
-            textFieldValues[i] = textField.getText();
-            yPos += 33;
+            yPos += 40;
         }
 
         fullName = new JTextField();
@@ -72,21 +63,29 @@ public class SignUP extends JFrame {
         contentPane.add(fullName);
         fullName.setColumns(10);
 
+        phoneNumber = new JTextField();
+        phoneNumber.setBounds(214, 105, 150, 20);
+        contentPane.add(phoneNumber);
+
+        passport = new JTextField();
+        passport.setBounds(214, 145, 150, 20);
+        contentPane.add(passport);
+
         username = new JTextField();
-        username.setBounds(214, 99, 150, 20);
+        username.setBounds(214, 185, 150, 20);
         contentPane.add(username);
         username.setColumns(10);
 
         password = new JPasswordField();
-        password.setBounds(214, 200, 150, 20);
+        password.setBounds(214, 225, 150, 20);
         contentPane.add(password);
 
         confirmPassword = new JPasswordField();
-        confirmPassword.setBounds(214, 247, 150, 20);
+        confirmPassword.setBounds(214, 265, 150, 20);
         contentPane.add(confirmPassword);
 
         JButton btnNewButton = new JButton("Sign Up");
-        btnNewButton.addActionListener(e -> signUpButtonAction(textFieldValues));
+        btnNewButton.addActionListener(e -> signUpButtonAction());
         btnNewButton.setBounds(387, 348, 89, 23);
         contentPane.add(btnNewButton);
 
@@ -96,7 +95,7 @@ public class SignUP extends JFrame {
         contentPane.add(btnNewButton_1);
     }
 
-    private void signUpButtonAction(String[] textFieldValues) {
+    private void signUpButtonAction() {
         int chk = 0;
         for (int i = 0; i < password.getText().length(); i++) {
             char check = password.getText().charAt(i);
@@ -106,42 +105,38 @@ public class SignUP extends JFrame {
             }
         }
 
-        if (isAnyFieldEmpty(textFieldValues)) {
+        if (isAnyFieldEmpty()) {
             JOptionPane.showMessageDialog(null, "Please fill all fields.");
         } else if (isUserAlreadyRegistered()) {
-            JOptionPane.showMessageDialog(null, "This username or CNIC is already registered. Please choose another.");
+            JOptionPane.showMessageDialog(null, "This username is already registered. Please choose another.");
         } else if (!password.getText().equals(confirmPassword.getText())) {
             JOptionPane.showMessageDialog(null, "Passwords do not match.");
         } else if (password.getText().length() < 8) {
             JOptionPane.showMessageDialog(null, "Password cannot be less than 8 characters.");
         } else if (!password.getText().matches(".*[@!%#^&*_].*")) {
             JOptionPane.showMessageDialog(null, "Password must have a special character");
-        } else if (cnic.getText().length() != 13 || !cnic.getText().matches("[0-9]+")) {
-            JOptionPane.showMessageDialog(null, "Enter a valid CNIC of 13 digits.");
+        } else if (phoneNumber.getText().length() != 10 || !phoneNumber.getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(null, "Enter a valid phone number of 10 digits.");
         } else if (chk < 1) {
             JOptionPane.showMessageDialog(null, "Password must have at least one uppercase letter.");
         } else {
-            Passengers obj = new Passengers(fullName.getText(), cnic.getText(), username.getText(), password.getText(), passport.getText());
+            Passengers obj = new Passengers(fullName.getText(), phoneNumber.getText(), username.getText(), password.getText(), passport.getText());
             PassengerList.add(obj);
+            CSVReader.addToCSV(StringRes.PASSENGERS, obj.toString());
 
-            Login obj1 = new Login();
-            obj1.setVisible(true);
-            dispose();
+//            Login obj1 = new Login();
+//            obj1.setVisible(true);
+//            dispose();
         }
     }
 
-    private boolean isAnyFieldEmpty(String[] textFieldValues) {
-        for (String value : textFieldValues) {
-            if (value == null || value.isEmpty()) {
-                return true;
-            }
-        }
-        return false;
+    private boolean isAnyFieldEmpty() {
+        return username.getText().isEmpty() ;
     }
 
     private boolean isUserAlreadyRegistered() {
         for (Passengers x : PassengerList) {
-            if (x.getUsername().equals(username.getText()) || x.getCnic().equals(cnic.getText())) {
+            if (x.getUsername().equals(username.getText()) || x.getPhoneNumber().equals(phoneNumber.getText())) {
                 return true;
             }
         }

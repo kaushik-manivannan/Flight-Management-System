@@ -28,6 +28,7 @@ public class BookingMenu extends JFrame {
 	public BookingMenu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 612, 406);
+		setTitle("Booking Menu");
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -41,29 +42,33 @@ public class BookingMenu extends JFrame {
 
 		JButton localFlightsButton = new JButton("Local Flights");
 		localFlightsButton.addActionListener(e -> {
-
+			dispose();
+			new BookLocalFlight().setVisible(true);
 		});
 		localFlightsButton.setBounds(202, 110, 150, 23);
 		contentPane.add(localFlightsButton);
 
 		JButton internationalFlightsButton = new JButton("International Flights");
 		internationalFlightsButton.addActionListener(e -> {
-
+			dispose();
+			new BookInternationalFlight().setVisible(true);
 		});
 		internationalFlightsButton.setBounds(202, 159, 150, 23);
 		contentPane.add(internationalFlightsButton);
 
 		JButton backButton = new JButton(StringRes.BACK.getValue());
 		backButton.addActionListener(e -> {
-			UserModeSelection userModeSelection = new UserModeSelection();
-			userModeSelection.setVisible(true);
 			dispose();
+			new Login().setVisible(true);
 		});
 		backButton.setBounds(202, 255, 150, 23);
 		contentPane.add(backButton);
 
 		JButton resetPasswordButton = new JButton("Reset Password");
 		resetPasswordButton.addActionListener(e -> {
+			dispose();
+			ResetPassword obj = new ResetPassword();
+			obj.setVisible(true);
 		});
 		resetPasswordButton.setBounds(202, 204, 150, 23);
 		contentPane.add(resetPasswordButton);

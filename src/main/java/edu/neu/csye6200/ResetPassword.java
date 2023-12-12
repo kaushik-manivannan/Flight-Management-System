@@ -1,5 +1,6 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.CSVReader;
 import edu.neu.csye6200.utils.StringRes;
 
 import java.awt.Color;
@@ -115,6 +116,7 @@ public class ResetPassword extends JFrame {
             } else {
                 // Update password and display success message
                 SignUP.PassengerList.get(index).setPassword(password.getText());
+                CSVReader.editPassengerCSV(SignUP.PassengerList);
                 JOptionPane.showMessageDialog(null, "Your password has been changed.");
 
                 // Navigate to the login screen
@@ -148,7 +150,10 @@ public class ResetPassword extends JFrame {
 
         // Button to go back
         JButton btnNewButton_2 = new JButton(StringRes.BACK.getValue());
-        btnNewButton_2.addActionListener(e -> dispose());
+        btnNewButton_2.addActionListener(e -> {
+            dispose();
+            new BookingMenu().setVisible(true);
+        });
         btnNewButton_2.setBounds(479, 298, 89, 23);
         contentPane.add(btnNewButton_2);
     }

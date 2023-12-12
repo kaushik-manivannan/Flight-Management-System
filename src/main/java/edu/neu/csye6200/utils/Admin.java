@@ -1,4 +1,4 @@
-package edu.neu.csye6200;
+package edu.neu.csye6200.utils;
 
 /**
  * The Admin class represents an administrator with a username and password for authentication.

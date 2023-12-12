@@ -1,12 +1,15 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.CSVReader;
+import edu.neu.csye6200.utils.Passengers;
+import edu.neu.csye6200.utils.StringRes;
+
 import java.awt.EventQueue;
 
 import javax.swing.border.EmptyBorder;
 import javax.swing.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.util.Map;
 
 public class Login extends JFrame {
 
@@ -15,16 +18,14 @@ public class Login extends JFrame {
 	private JPasswordField password;
 
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Login frame = new Login();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		EventQueue.invokeLater(() -> {
+            try {
+                Login frame = new Login();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 	}
 
 	public Login() {
@@ -42,9 +43,9 @@ public class Login extends JFrame {
 	}
 
 	private void setMainFrameProperties() {
-
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 590, 401);
+		setTitle("Passenger Login");
 	}
 
 	private void createContentPane() {
@@ -55,8 +56,8 @@ public class Login extends JFrame {
 	}
 
 	private void addWelcomeLabel() {
-		JLabel welcomeLabel = new JLabel("Welcome to Airline Flight Management System ");
-		welcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		JLabel welcomeLabel = new JLabel(StringRes.TITLE.getValue());
+		welcomeLabel.setFont(new Font("Calibri", Font.ITALIC, 18));
 		welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		welcomeLabel.setBounds(41, 11, 414, 24);
 		contentPane.add(welcomeLabel);
@@ -86,21 +87,17 @@ public class Login extends JFrame {
 
 	private void addLoginButton() {
 		JButton loginbtn = new JButton("Login");
-		loginbtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				handleLogin();
-			}
-		});
+		loginbtn.addActionListener(e -> authUser());
 		loginbtn.setBounds(103, 99, 89, 23);
 		contentPane.add(loginbtn);
 	}
 
 	private void addSignUpButton() {
 		JButton signupbtn = new JButton("Sign Up");
-		signupbtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				handleSignUp();
-			}
+		signupbtn.addActionListener(e -> {
+			dispose();
+			SignUP obj = new SignUP();
+			obj.setVisible(true);
 		});
 		signupbtn.setBounds(103, 133, 89, 23);
 		contentPane.add(signupbtn);
@@ -121,38 +118,33 @@ public class Login extends JFrame {
 
 	private void addBackButton() {
 		JButton btnNewButton = new JButton("Back");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
+		btnNewButton.addActionListener(e -> {
+			dispose();
+			new UserModeSelection().setVisible(true);
 		});
 		btnNewButton.setBounds(419, 137, 89, 23);
 		contentPane.add(btnNewButton);
 	}
 
-	private void handleLogin() {
+	private void authUser() {
 		if (username.getText().equals("") || password.getText().equals("")) {
 			JOptionPane.showMessageDialog(null, "Please fill all the fields");
 		}
 
-
-		for (Passengers x : SignUP.PassengerList) {
-			if (username.getText().equals(x.getUsername()) && password.getText().equals(x.getPassword())) {
+		Map<String,String> hashMap = CSVReader.loginAuth();
+		String user = username.getText();
+		if (hashMap.containsKey(user)) {
+			if (hashMap.get(user).equals(new String(password.getPassword()))) {
+				Passengers.currentUser = user;
+				dispose();
 				BookingMenu obj = new BookingMenu();
 				obj.setVisible(true);
-				dispose();
-			} else if (username.getText().equals(x.getUsername())) {
-				JOptionPane.showMessageDialog(null, "Incorrect password. Enter Again.");
 			} else {
-				JOptionPane.showMessageDialog(null, "You are not a registered user.");
+				JOptionPane.showMessageDialog(null, "Incorrect password. Enter Again.");
 			}
+		} else {
+			JOptionPane.showMessageDialog(null, "You are not a registered user.");
 		}
-	}
-
-	private void handleSignUp() {
-		dispose();
-		SignUP obj = new SignUP();
-		obj.setVisible(true);
 	}
 }
 
