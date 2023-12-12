@@ -1,6 +1,7 @@
 package edu.neu.csye6200;
 
 import edu.neu.csye6200.utils.CSVReader;
+import edu.neu.csye6200.utils.Passengers;
 import edu.neu.csye6200.utils.StringRes;
 
 import java.awt.EventQueue;
@@ -134,6 +135,7 @@ public class Login extends JFrame {
 		String user = username.getText();
 		if (hashMap.containsKey(user)) {
 			if (hashMap.get(user).equals(new String(password.getPassword()))) {
+				Passengers.currentUser = user;
 				dispose();
 				BookingMenu obj = new BookingMenu();
 				obj.setVisible(true);

@@ -10,6 +10,8 @@ public class Passengers {
 	private String password;
 	private String passport;
 	private boolean isBooked;
+
+	public static String currentUser = "";
 	
 	public Passengers(String name, String phoneNumber, String username, String password, String passport)
 	{

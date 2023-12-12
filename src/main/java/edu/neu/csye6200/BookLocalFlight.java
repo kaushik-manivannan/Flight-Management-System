@@ -103,96 +103,71 @@ public class  BookLocalFlight extends JFrame {
         contentPane.add(btnNewButton);
 
         JButton btnNewButton_1 = new JButton("Book DomesticFlight");
-        btnNewButton_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                if (flightTable.getSelectedRowCount()==1)
+        btnNewButton_1.addActionListener(e -> {
+            if (flightTable.getSelectedRowCount()==1)
+            {
+                String selectClass = JOptionPane.showInputDialog(null, "Enter '1' for Economy and '2' for Business class.",null);
+                int slctClass = Integer.valueOf(selectClass);
+
+                switch (slctClass)
                 {
-                    String selectClass = JOptionPane.showInputDialog(null, "Enter '1' for Economy and '2' for Business class.",null);
-                    int slctClass = Integer.valueOf(selectClass);
-
-                    switch (slctClass)
+                    case 1:
                     {
-                        case 1:
+                        if (Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 5)) > 0 )
                         {
-                            for (Passengers x: SignUP.PassengerList)
-                            {
-                                if (x.getUsername().equals(SignUP.username.getText()))
-                                {
-                                    if(x.getBooked()==true)
-                                    {
-                                        JOptionPane.showMessageDialog(null, "Your flight has already been booked against your Passport: "+x.getPassport());
-                                    }
-                                    if (Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 5)) > 0 )
-                                    {
-                                        String str = SignUP.username.getText() + "," +
-                                                flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 5) + "," +
-                                                "Booked";
-
-                                        CSVReader.addToCSV(StringRes.BOOKING, str);
-                                        x.setBooked(true);
-                                        JOptionPane.showMessageDialog(null, "Your flight has been booked against your Passport: "+x.getPassport());
-                                    }
-                                    else
-                                    {
-                                        JOptionPane.showMessageDialog(null, "This flight has no available seats in Economy class.");
-                                    }
-
-                                }
-                            }
-                            break;
+                            String str = Passengers.currentUser + "," +
+                                    flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 0) + "," +
+                                    "Booked";
+                            CSVReader.addToCSV(StringRes.BOOKING, str);
+                            JOptionPane.showMessageDialog(null, "Your flight has been booked");
                         }
-                        case 2:
+                        else
                         {
-                            for (Passengers x: SignUP.PassengerList)
-                            {
-                                if (x.getUsername().equals(SignUP.username.getText()))
-                                {
-                                    if(x.getBooked()==true)
-                                    {
-                                        JOptionPane.showMessageDialog(null, "Your flight has already been booked against your Passport: "+x.getPassport());
-                                    }
-                                    if (Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 6)) > 0 )
-                                    {
-                                        x.setBooked(true);
-                                        JOptionPane.showMessageDialog(null, "Your flight has been booked against your Passport: "+x.getPassport());
-                                    }
-                                    else
-                                    {
-                                        JOptionPane.showMessageDialog(null, "This flight has no available seats in Business class.");
-                                    }
-                                }
-                            }
-
-                            break;
+                            JOptionPane.showMessageDialog(null, "This flight has no available seats in Economy class.");
                         }
-                        default:
+                        break;
+                    }
+                    case 2:
+                    {
+                        if (Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 6)) > 0 )
                         {
-                            JOptionPane.showMessageDialog(null, "You entered an invalid input. Try again");
-                            break;
+                            String str = Passengers.currentUser + "," +
+                                    flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 0) + "," +
+                                    "Booked";
+                            CSVReader.addToCSV(StringRes.BOOKING, str);
+                            JOptionPane.showMessageDialog(null, "Your flight has been booked");
                         }
+                        else
+                        {
+                            JOptionPane.showMessageDialog(null, "This flight has no available seats in Business class.");
+                        }
+                        break;
+                    }
+                    default:
+                    {
+                        JOptionPane.showMessageDialog(null, "You entered an invalid input. Try again");
+                        break;
                     }
                 }
-                else if(flightTable.getSelectedRowCount()==0)
-                {
-                    JOptionPane.showMessageDialog(null, "Please select a flight to book.");
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null, "Please select one flight at a time.");
-                }
+            }
+            else if(flightTable.getSelectedRowCount()==0)
+            {
+                JOptionPane.showMessageDialog(null, "Please select a flight to book.");
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Please select one flight at a time.");
             }
         });
         btnNewButton_1.setBounds(127, 250, 111, 23);
         contentPane.add(btnNewButton_1);
 
         JButton btnNewButton_2 = new JButton("View Ticket Price");
-        btnNewButton_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                double hour=Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 7));
+        btnNewButton_2.addActionListener(e -> {
+            double hour=Integer.valueOf((String) flightTable.getModel().getValueAt(flightTable.getSelectedRow(), 7));
 
-                double price=(hour*10000)+((hour*10000)*5/100);
-                JOptionPane.showMessageDialog(null, "The cost for this flight is: "+price);
-            }
+            double price=(hour*10000)+((hour*10000)*5/100);
+            JOptionPane.showMessageDialog(null, "The cost for this flight is: "+price);
         });
         btnNewButton_2.setBounds(371, 250, 136, 23);
         contentPane.add(btnNewButton_2);
