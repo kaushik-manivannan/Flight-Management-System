@@ -51,3 +51,46 @@ public class InternationalFlightSchedule extends JFrame {
 /**
  * Create the frame.
  */
+
+public InternationalFlightSchedule() {
+	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	setBounds(100, 100, 800, 443);
+	contentPane = new JPanel();
+	contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+	setContentPane(contentPane);
+	contentPane.setLayout(null);
+
+
+
+	String[] columns = {"DomesticFlight ID", "Time", "Date", "Daparture Destination",
+			"Land Destination" , "Economy Seats" , "Business Seats" , "Time Duration"};
+
+	DefaultTableModel obj=new DefaultTableModel(columns,0);
+
+
+	for (int i=0 ; i<InternationalFlightSchedule.flightList2.size() ; i++)
+	{
+
+		Object[] update= {InternationalFlightSchedule.flightList2.get(i).getFlightID() , InternationalFlightSchedule.flightList2.get(i).getDepartTime() , InternationalFlightSchedule.flightList2.get(i).getLandTime()
+				, InternationalFlightSchedule.flightList2.get(i).getDepartDestination() , InternationalFlightSchedule.flightList2.get(i).getLandDestination() ,
+				InternationalFlightSchedule.flightList2.get(i).getEconomySeats() , InternationalFlightSchedule.flightList2.get(i).getBusinessSeats() , InternationalFlightSchedule.flightList2.get(i).getDistance()};
+
+		obj.addRow(update);
+	}
+
+	table = new JTable(obj);
+	JScrollPane scrollPane = new JScrollPane(table);
+	scrollPane.setBounds(10, 39, 764, 200);
+	contentPane.add(scrollPane);
+	//	scrollPane.setColumnHeaderView(table);
+
+	btnNewButton = new JButton("Add");
+	btnNewButton.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			AddInternationalFlight obj=new AddInternationalFlight();
+			obj.setVisible(true);
+			dispose();
+		}
+	});
+
+	
