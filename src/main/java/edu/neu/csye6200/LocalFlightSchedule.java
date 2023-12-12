@@ -1,5 +1,7 @@
 package edu.neu.csye6200;
 
+import edu.neu.csye6200.utils.DomesticFlight;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -27,7 +29,7 @@ public class LocalFlightSchedule extends JFrame {
 	private JButton btnEdit;
 	private JLabel lblLocalFlightSchedule;
 	private JButton btnBack;
-	static List<Flight> flightList = new ArrayList<Flight>();
+	static List<DomesticFlight> domesticFlightList = new ArrayList<>();
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -63,15 +65,15 @@ public class LocalFlightSchedule extends JFrame {
 	}
 
 	private void initializeTable() {
-		String[] columns = {"Flight ID", "Time", "Date", "Departure Destination",
+		String[] columns = {"DomesticFlight ID", "Time", "Date", "Departure Destination",
 				"Land Destination", "Economy Seats", "Business Seats", "Time Duration"};
 
 		DefaultTableModel obj = new DefaultTableModel(columns, 0);
 
-		for (Flight flight : LocalFlightSchedule.flightList) {
-			Object[] update = {flight.getFlightID(), flight.getDepartTime(), flight.getLandTime(),
-					flight.getDepartDestination(), flight.getLandDestination(),
-					flight.getEconomySeats(), flight.getBusinessSeats(), flight.getDistance()};
+		for (DomesticFlight domesticFlight : LocalFlightSchedule.domesticFlightList) {
+			Object[] update = {domesticFlight.getFlightID(), domesticFlight.getDepartTime(), domesticFlight.getLandTime(),
+					domesticFlight.getDepartDestination(), domesticFlight.getLandDestination(),
+					domesticFlight.getEconomySeats(), domesticFlight.getBusinessSeats(), domesticFlight.getDistance()};
 
 			obj.addRow(update);
 		}
@@ -125,7 +127,7 @@ public class LocalFlightSchedule extends JFrame {
 
 
 	private void addLabels() {
-		lblLocalFlightSchedule = new JLabel("Local Flight Schedule");
+		lblLocalFlightSchedule = new JLabel("Local DomesticFlight Schedule");
 		lblLocalFlightSchedule.setFont(new Font("Calibri", Font.BOLD, 15));
 		lblLocalFlightSchedule.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLocalFlightSchedule.setBounds(10, 11, 680, 17);
@@ -136,7 +138,7 @@ public class LocalFlightSchedule extends JFrame {
 		if (table.getSelectedRowCount() == 1) {
 			DefaultTableModel model = (DefaultTableModel) table.getModel();
 			model.removeRow(table.getSelectedRow());
-			flightList.remove(table.getSelectedRow() + 1);
+			domesticFlightList.remove(table.getSelectedRow() + 1);
 			JOptionPane.showMessageDialog(null, "Selected flight has been deleted.");
 		} else if (table.getSelectedRowCount() == 0) {
 			JOptionPane.showMessageDialog(null, "Please select a row first.");
