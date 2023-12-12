@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.List;
+import java.util.stream.Collectors;
 import javax.swing.JButton;
 
 public class Driver extends JFrame {
@@ -17,13 +19,13 @@ public class Driver extends JFrame {
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
-            try {
-                Driver frame = new Driver();
-                frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+			try {
+				Driver frame = new Driver();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 	}
 
 	public Driver() {
@@ -61,9 +63,9 @@ public class Driver extends JFrame {
 		JButton loginTypeButton = new JButton("Click here to select your login type");
 		loginTypeButton.addActionListener(e -> {
 			dispose();
-            UserModeSelection userModeSelection = new UserModeSelection();
-            userModeSelection.setVisible(true);
-        });
+			UserModeSelection userModeSelection = new UserModeSelection();
+			userModeSelection.setVisible(true);
+		});
 		loginTypeButton.setBounds(158, 129, 249, 23);
 		contentPane.add(loginTypeButton);
 	}
@@ -77,17 +79,23 @@ public class Driver extends JFrame {
 
 	private void initializeFlightData() {
 
-		for (String str: CSVReader.readCSV(StringRes.DOMESTIC)) {
-			LocalFlightSchedule.domesticFlightList.add(new DomesticFlight(str));
-		}
+		List<String> internationalFlightCSVList = CSVReader.readCSV(StringRes.INTERNATIONAL);
+		List<String> domesticFlighCSVList = CSVReader.readCSV(StringRes.DOMESTIC);
 
-		for (String str: CSVReader.readCSV(StringRes.INTERNATIONAL)) {
-			InternationalFlightSchedule.flightList2.add(new InternationalFlight(str));
-		}
+		AbstractFlightFactory abstractFlightFactory = InternationalFlightFactory.getInstance();
+		internationalFlightCSVList
+				.stream()
+				.map(abstractFlightFactory::createFlight)
+				.forEach(flight -> InternationalFlightSchedule.flightList2.add((InternationalFlight) flight));
+
+		AbstractFlightFactory abstractFlightFactory1 = DomesticFlightFactory.INSTANCE;
+		domesticFlighCSVList
+				.stream()
+				.map(abstractFlightFactory1::createFlight)
+				.forEach(flight -> LocalFlightSchedule.domesticFlightList.add((DomesticFlight) flight));
 
 		for (String str: CSVReader.readCSV(StringRes.PASSENGERS)) {
 			SignUP.PassengerList.add(new Passengers(str));
 		}
 	}
 }
-
