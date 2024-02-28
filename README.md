@@ -2,6 +2,9 @@
 ## Overview
 The Flight Management System is a Java Swing application designed to manage domestic and international flight schedules, bookings, and passenger information. The system provides separate interfaces for administrators and passengers to interact with the system, offering functionalities such as viewing flight schedules, booking flights, and managing user accounts.
 
+## Demo Screenshot
+<img width="894" alt="Screenshot 2024-02-28 at 1 23 21 PM" src="https://github.com/kaushik-manivannan/Flight-Management-System/assets/144855772/4ea1dec7-b6ba-4ae3-b4af-3c00462e35b4">
+
 ## Key Features
 ### User Modes:
 
