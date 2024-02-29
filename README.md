@@ -26,7 +26,7 @@ Passengers can reset their passwords by providing their username and verifying t
 The graphical user interface (GUI) is implemented using Java Swing for a user-friendly experience.
 ### CSV Handling: 
 Flight and passenger data is stored in CSV files, and the system uses CSV handling for data input/output.
-### Factory Pattern:
+### Factory Patterns:
 Used Eager Singleton and Enum Singleton Factory patterns to create objects for International and Domestic flights
 ### Stream API:
 Used for list operations including file handling.
