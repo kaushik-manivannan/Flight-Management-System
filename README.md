@@ -49,36 +49,6 @@ Passengers can view flight schedules and make bookings.
 ### Password Reset:
 
 Passengers can reset their passwords by providing their username and verifying their identity.
-## Contributors
-The project was collaboratively developed by seven contributors, each responsible for specific components:
-
-Admin Interface: Contributor: **Haresh Ramasamy**
-
-Responsibilities: Implemented the admin interface, including flight scheduling and management functionalities.
-
-Passenger Interface: Contributor: **Deepak Sundar Narayanan**
-
-Responsibilities: Implemented the passenger interface, including flight viewing and booking functionalities.
-
-Login and Authentication: Contributor: **Akash Arumugam Venkatachalapathy**
-
-Responsibilities: Implemented the login system and user authentication for both admins and passengers.
-
-Password Reset: Contributor: **Kaushik Manivannan**
-
-Responsibilities: Implemented the password reset functionality for passengers.
-
-CSV Handling: Contributor: **Yakgna Venkatesh Ramasamy**
-
-Responsibilities: Implemented CSV handling for storing and retrieving flight and passenger data.
-
-User Sign Up: Contributor: **Aravind Sathyanarayanan**
-
-Responsibilities: Implemented the user sign-up functionality for passengers.
-
-User Mode Selection:  Contributor: **Chakradhar Abhinay Mocherla**
-
-Responsibilities: Implemented the user mode selection interface for choosing between admin and passenger modes.
 
 ## Conclusion
 The Flight Management System provides a comprehensive solution for managing flight schedules and bookings. The collaborative effort of the seven contributors has resulted in a user-friendly and functional application.
